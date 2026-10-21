@@ -142,14 +142,23 @@ public final class JavaBlockModelLoader {
                 int rotation = faceData.containsKey("rotation") ? Math.round(number(faceData.get("rotation"), "face.rotation", modelPath)) : 0;
                 if (rotation != 0 && rotation != 90 && rotation != 180 && rotation != 270)
                     throw bad(modelPath, "face '" + face + "' rotation must be 0, 90, 180, or 270 degrees");
-                List<Object> uv = faceData.containsKey("uv")
-                    ? array(faceData.get("uv"), "face.uv", modelPath)
-                    : List.of(0.0, 0.0, (double) textureWidth, (double) textureHeight);
-                if (uv.size() != 4) throw bad(modelPath, "face '" + face + "' uv must contain [u1, v1, u2, v2]");
-                float u0 = number(uv.get(0), "uv.u1", modelPath) / textureWidth;
-                float v0 = number(uv.get(1), "uv.v1", modelPath) / textureHeight;
-                float u1 = number(uv.get(2), "uv.u2", modelPath) / textureWidth;
-                float v1 = number(uv.get(3), "uv.v2", modelPath) / textureHeight;
+                float[] uvPixels;
+                if (faceData.containsKey("uv")) {
+                    List<Object> uv = array(faceData.get("uv"), "face.uv", modelPath);
+                    if (uv.size() != 4) throw bad(modelPath, "face '" + face + "' uv must contain [u1, v1, u2, v2]");
+                    uvPixels = new float[]{
+                        number(uv.get(0), "uv.u1", modelPath), number(uv.get(1), "uv.v1", modelPath),
+                        number(uv.get(2), "uv.u2", modelPath), number(uv.get(3), "uv.v2", modelPath)
+                    };
+                } else {
+                    // Java Block/Item's omitted-UV fallback is a direction-specific projection
+                    // of the element bounds, not the whole texture for every face.
+                    uvPixels = defaultFaceUv(face, x0, y0, z0, x1, y1, z1, textureWidth, textureHeight);
+                }
+                float u0 = uvPixels[0] / textureWidth;
+                float v0 = uvPixels[1] / textureHeight;
+                float u1 = uvPixels[2] / textureWidth;
+                float v1 = uvPixels[3] / textureHeight;
                 TexturedCuboidMeshFactory.FaceTexture mapping = new TexturedCuboidMeshFactory.FaceTexture(
                     textureId, rotation, false, false, u0, v0, u1, v1, true);
                 faceMap.put(factoryFace, mapping);
@@ -169,6 +178,47 @@ public final class JavaBlockModelLoader {
         if (parts.isEmpty()) throw bad(modelPath, "model contains no renderable cuboid elements");
         float modelHeight = Math.max(0.01f, maxY - Math.min(0.0f, minY));
         return new EntityModel(stripExtension(modelPath.getFileName().toString()), modelHeight, parts);
+    }
+
+    /**
+     * Java Block/Item UV projection when a face omits its explicit UV rectangle.
+     * Coordinates in the model are 0..16 units; texture-space coordinates scale
+     * to the project's declared texture_size (Blockbench Java export convention).
+     */
+    private static float[] defaultFaceUv(String face, float fromX, float fromY, float fromZ,
+                                          float toX, float toY, float toZ,
+                                          int textureWidth, int textureHeight) {
+        float sx = textureWidth / 16.0f;
+        float sy = textureHeight / 16.0f;
+        float u0, v0, u1, v1;
+        switch (face) {
+            case "down" -> {
+                u0 = fromX * sx; v0 = textureHeight - toZ * sy;
+                u1 = toX * sx;   v1 = textureHeight - fromZ * sy;
+            }
+            case "up" -> {
+                u0 = fromX * sx; v0 = fromZ * sy;
+                u1 = toX * sx;   v1 = toZ * sy;
+            }
+            case "north" -> {
+                u0 = textureWidth - toX * sx; v0 = textureHeight - toY * sy;
+                u1 = textureWidth - fromX * sx; v1 = textureHeight - fromY * sy;
+            }
+            case "south" -> {
+                u0 = fromX * sx; v0 = textureHeight - toY * sy;
+                u1 = toX * sx;   v1 = textureHeight - fromY * sy;
+            }
+            case "west" -> {
+                u0 = fromZ * sx; v0 = textureHeight - toY * sy;
+                u1 = toZ * sx;   v1 = textureHeight - fromY * sy;
+            }
+            case "east" -> {
+                u0 = textureWidth - toZ * sx; v0 = textureHeight - toY * sy;
+                u1 = textureWidth - fromZ * sx; v1 = textureHeight - fromY * sy;
+            }
+            default -> throw new IllegalArgumentException("Unsupported Java model face: " + face);
+        }
+        return new float[]{u0, v0, u1, v1};
     }
 
     private static Path findTexture(String raw, Path textureRoot, Path fallbackRoot) throws IOException {

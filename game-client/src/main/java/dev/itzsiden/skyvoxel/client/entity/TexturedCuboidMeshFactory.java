@@ -27,14 +27,19 @@ final class TexturedCuboidMeshFactory {
             new Uv[]{uv(0,0),uv(0,1),uv(1,1),uv(1,0)}, 1.00f),
         new Face("FRONT", new P[]{p(-.5f,-.5f,.5f),p(.5f,-.5f,.5f),p(.5f,.5f,.5f),p(-.5f,.5f,.5f)},
             new Uv[]{uv(0,1),uv(1,1),uv(1,0),uv(0,0)}, .80f),
+        // Minecraft Java Block/Item UVs are direction-relative, not one generic
+        // left-to-right mapping for all vertical faces. EAST reverses Z and NORTH
+        // reverses X so labels/patterns keep the same orientation as Blockbench.
         new Face("RIGHT", new P[]{p(.5f,-.5f,-.5f),p(.5f,.5f,-.5f),p(.5f,.5f,.5f),p(.5f,-.5f,.5f)},
-            new Uv[]{uv(0,1),uv(0,0),uv(1,0),uv(1,1)}, .68f),
+            new Uv[]{uv(1,1),uv(1,0),uv(0,0),uv(0,1)}, .68f),
         new Face("BACK", new P[]{p(.5f,-.5f,-.5f),p(-.5f,-.5f,-.5f),p(-.5f,.5f,-.5f),p(.5f,.5f,-.5f)},
-            new Uv[]{uv(1,1),uv(0,1),uv(0,0),uv(1,0)}, .56f),
+            new Uv[]{uv(0,1),uv(1,1),uv(1,0),uv(0,0)}, .56f),
         new Face("LEFT", new P[]{p(-.5f,-.5f,-.5f),p(-.5f,-.5f,.5f),p(-.5f,.5f,.5f),p(-.5f,.5f,-.5f)},
             new Uv[]{uv(0,1),uv(1,1),uv(1,0),uv(0,0)}, .65f),
+        // DOWN maps V in the opposite Z direction (v = 16 - z in the
+        // Java model coordinate convention); the old mapping mirrored this face.
         new Face("BOTTOM", new P[]{p(-.5f,-.5f,-.5f),p(.5f,-.5f,-.5f),p(.5f,-.5f,.5f),p(-.5f,-.5f,.5f)},
-            new Uv[]{uv(0,0),uv(1,0),uv(1,1),uv(0,1)}, .42f)
+            new Uv[]{uv(0,1),uv(1,1),uv(1,0),uv(0,0)}, .42f)
     };
 
     private TexturedCuboidMeshFactory() { }

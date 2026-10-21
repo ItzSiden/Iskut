@@ -21,7 +21,7 @@ import java.util.WeakHashMap;
 /** Generates transparent isometric inventory thumbnails directly from authored cuboid .vmodel parts. */
 public final class ItemIconGenerator {
     public static final int ICON_SIZE = 64;
-    public static final int GENERATOR_VERSION = 3;
+    public static final int GENERATOR_VERSION = 4;
     private static final Map<TextureData, BufferedImage> ATLAS_IMAGES = new WeakHashMap<>();
 
     private static final float CAMERA_X = 0.55f;

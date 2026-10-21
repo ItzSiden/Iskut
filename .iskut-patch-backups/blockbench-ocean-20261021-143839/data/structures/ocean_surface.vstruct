@@ -1,4 +1,0 @@
-# Wide non-collidable ocean plane. Top surface is sea level Y=-0.18. The wet sand is just above it; shallow water and foam are visual shoreline overlays.
-SKYVOXEL_STRUCTURE 1
-NAME Ocean_Surface
-CUBOID ocean_water water 0 -0.280 0 1024 0.200 1024 false

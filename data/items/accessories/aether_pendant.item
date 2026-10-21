@@ -1,0 +1,13 @@
+id=aether_pendant
+name=Aether Pendant
+description=A small charm that steadies the flow of mana.
+category=accessory
+rarity=UNCOMMON
+max_stack=1
+icon=AP
+equipment_slot=ACCESSORY
+sell_price=45
+modifier=max_mana|FLAT|12
+modifier=intelligence|FLAT|2
+tag=starter
+tag=accessory

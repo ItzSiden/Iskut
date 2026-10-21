@@ -1,0 +1,456 @@
+{
+	"format_version": "26.3",
+	"credit": "Converted to Blockbench Minecraft Java Block/Item JSON from the original Iskut model; open/save with Blockbench.",
+	"texture_size": [
+		8,
+		8
+	],
+	"textures": {
+		"stone": "moonstone_ore/stone",
+		"silver": "moonstone_ore/silver",
+		"violet": "moonstone_ore/violet"
+	},
+	"elements": [
+		{
+			"name": "ore_core",
+			"from": [
+				5.44,
+				5.28,
+				5.84
+			],
+			"to": [
+				10.56,
+				10.08,
+				10.16
+			],
+			"faces": {
+				"up": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#stone"
+				},
+				"down": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#stone"
+				},
+				"south": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#stone"
+				},
+				"north": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#stone"
+				},
+				"west": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#stone"
+				},
+				"east": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#stone"
+				}
+			}
+		},
+		{
+			"name": "ore_chip_a",
+			"from": [
+				5.2,
+				8.56,
+				7.2
+			],
+			"to": [
+				7.28,
+				10.48,
+				9.6
+			],
+			"faces": {
+				"up": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#stone"
+				},
+				"down": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#stone"
+				},
+				"south": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#stone"
+				},
+				"north": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#stone"
+				},
+				"west": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#stone"
+				},
+				"east": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#stone"
+				}
+			},
+			"rotation": {
+				"angle": -12.0,
+				"axis": "y",
+				"origin": [
+					6.24,
+					9.52,
+					8.4
+				]
+			}
+		},
+		{
+			"name": "moon_crystal",
+			"from": [
+				7.52,
+				7.84,
+				7.56
+			],
+			"to": [
+				8.96,
+				12.64,
+				9.08
+			],
+			"faces": {
+				"up": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#silver"
+				},
+				"down": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#silver"
+				},
+				"south": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#silver"
+				},
+				"north": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#silver"
+				},
+				"west": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#silver"
+				},
+				"east": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#silver"
+				}
+			},
+			"rotation": {
+				"angle": -8.0,
+				"axis": "y",
+				"origin": [
+					8.24,
+					10.24,
+					8.32
+				]
+			}
+		},
+		{
+			"name": "crystal_tip",
+			"from": [
+				7.76,
+				12.24,
+				7.76
+			],
+			"to": [
+				8.72,
+				13.52,
+				8.88
+			],
+			"faces": {
+				"up": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#violet"
+				},
+				"down": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#violet"
+				},
+				"south": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#violet"
+				},
+				"north": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#violet"
+				},
+				"west": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#violet"
+				},
+				"east": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#violet"
+				}
+			}
+		},
+		{
+			"name": "crystal_shard",
+			"from": [
+				9.44,
+				7.52,
+				8.8
+			],
+			"to": [
+				10.4,
+				10.72,
+				9.76
+			],
+			"faces": {
+				"up": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#violet"
+				},
+				"down": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#violet"
+				},
+				"south": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#violet"
+				},
+				"north": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#violet"
+				},
+				"west": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#violet"
+				},
+				"east": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#violet"
+				}
+			},
+			"rotation": {
+				"angle": 18.0,
+				"axis": "y",
+				"origin": [
+					9.92,
+					9.12,
+					9.28
+				]
+			}
+		},
+		{
+			"name": "ore_crack",
+			"from": [
+				7.184,
+				6.64,
+				10.176
+			],
+			"to": [
+				7.536,
+				8.72,
+				10.368
+			],
+			"faces": {
+				"up": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#silver"
+				},
+				"down": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#silver"
+				},
+				"south": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#silver"
+				},
+				"north": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#silver"
+				},
+				"west": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#silver"
+				},
+				"east": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#silver"
+				}
+			}
+		}
+	]
+}

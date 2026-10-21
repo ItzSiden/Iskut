@@ -1,0 +1,13 @@
+id=traveler_hood
+name=Traveler's Hood
+description=A sturdy hood for the first steps beyond the hub.
+category=armor
+rarity=COMMON
+max_stack=1
+icon=HD
+equipment_slot=HELMET
+sell_price=18
+modifier=max_health|FLAT|5
+modifier=defense|FLAT|3
+tag=starter
+tag=armor

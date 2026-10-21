@@ -1,0 +1,9 @@
+id=empty_vial
+name=Empty Vial
+description=A glass vial ready for alchemical ingredients.
+category=material
+rarity=COMMON
+max_stack=99
+icon=VI
+sell_price=1
+tag=material

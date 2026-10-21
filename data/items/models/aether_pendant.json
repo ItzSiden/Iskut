@@ -1,0 +1,516 @@
+{
+	"format_version": "26.3",
+	"credit": "Converted to Blockbench Minecraft Java Block/Item JSON from the original Iskut model; open/save with Blockbench.",
+	"texture_size": [
+		8,
+		8
+	],
+	"textures": {
+		"gold": "aether_pendant/gold",
+		"cyan": "aether_pendant/cyan",
+		"violet": "aether_pendant/violet"
+	},
+	"elements": [
+		{
+			"name": "chain_left",
+			"from": [
+				6.76,
+				8.88,
+				7.8
+			],
+			"to": [
+				7.16,
+				11.6,
+				8.2
+			],
+			"faces": {
+				"up": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#gold"
+				},
+				"down": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#gold"
+				},
+				"south": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#gold"
+				},
+				"north": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#gold"
+				},
+				"west": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#gold"
+				},
+				"east": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#gold"
+				}
+			},
+			"rotation": {
+				"angle": -5.0,
+				"axis": "y",
+				"origin": [
+					6.96,
+					10.24,
+					8.0
+				]
+			}
+		},
+		{
+			"name": "chain_right",
+			"from": [
+				8.84,
+				8.88,
+				7.8
+			],
+			"to": [
+				9.24,
+				11.6,
+				8.2
+			],
+			"faces": {
+				"up": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#gold"
+				},
+				"down": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#gold"
+				},
+				"south": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#gold"
+				},
+				"north": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#gold"
+				},
+				"west": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#gold"
+				},
+				"east": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#gold"
+				}
+			},
+			"rotation": {
+				"angle": 5.0,
+				"axis": "y",
+				"origin": [
+					9.04,
+					10.24,
+					8.0
+				]
+			}
+		},
+		{
+			"name": "chain_top",
+			"from": [
+				7.2,
+				11.32,
+				7.8
+			],
+			"to": [
+				8.8,
+				11.72,
+				8.2
+			],
+			"faces": {
+				"up": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#gold"
+				},
+				"down": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#gold"
+				},
+				"south": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#gold"
+				},
+				"north": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#gold"
+				},
+				"west": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#gold"
+				},
+				"east": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#gold"
+				}
+			}
+		},
+		{
+			"name": "pendant_frame",
+			"from": [
+				6.48,
+				6.0,
+				7.72
+			],
+			"to": [
+				9.52,
+				9.52,
+				8.76
+			],
+			"faces": {
+				"up": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#gold"
+				},
+				"down": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#gold"
+				},
+				"south": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#gold"
+				},
+				"north": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#gold"
+				},
+				"west": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#gold"
+				},
+				"east": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#gold"
+				}
+			}
+		},
+		{
+			"name": "pendant_gem",
+			"from": [
+				7.04,
+				6.56,
+				8.6
+			],
+			"to": [
+				8.96,
+				8.96,
+				9.16
+			],
+			"faces": {
+				"up": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#cyan"
+				},
+				"down": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#cyan"
+				},
+				"south": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#cyan"
+				},
+				"north": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#cyan"
+				},
+				"west": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#cyan"
+				},
+				"east": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#cyan"
+				}
+			}
+		},
+		{
+			"name": "gem_facet",
+			"from": [
+				8.08,
+				7.96,
+				9.152
+			],
+			"to": [
+				8.72,
+				8.84,
+				9.376
+			],
+			"faces": {
+				"up": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#violet"
+				},
+				"down": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#violet"
+				},
+				"south": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#violet"
+				},
+				"north": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#violet"
+				},
+				"west": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#violet"
+				},
+				"east": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#violet"
+				}
+			}
+		},
+		{
+			"name": "lower_point",
+			"from": [
+				7.56,
+				5.24,
+				8.12
+			],
+			"to": [
+				8.44,
+				6.28,
+				8.84
+			],
+			"faces": {
+				"up": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#gold"
+				},
+				"down": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#gold"
+				},
+				"south": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#gold"
+				},
+				"north": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#gold"
+				},
+				"west": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#gold"
+				},
+				"east": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#gold"
+				}
+			}
+		}
+	]
+}

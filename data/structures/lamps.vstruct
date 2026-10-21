@@ -1,0 +1,19 @@
+SKYVOXEL_STRUCTURE 1
+NAME Street_Lamps
+CUBOID lamp_west_post wood -3.8 1.35 6.0 0.24 2.7 0.24 true
+CUBOID lamp_west_arm wood -3.3 2.58 6.0 1.0 0.15 0.15 false
+CUBOID lamp_west_light gold -2.8 2.32 6.0 0.36 0.4 0.36 false
+CUBOID lamp_west_cap stone_dark -2.8 2.62 6.0 0.48 0.1 0.48 false
+
+CUBOID lamp_east_post wood 3.8 1.35 6.0 0.24 2.7 0.24 true
+CUBOID lamp_east_arm wood 3.3 2.58 6.0 1.0 0.15 0.15 false
+CUBOID lamp_east_light gold 2.8 2.32 6.0 0.36 0.4 0.36 false
+CUBOID lamp_east_cap stone_dark 2.8 2.62 6.0 0.48 0.1 0.48 false
+
+CUBOID lamp_west_north_post wood -3.8 1.35 -4.0 0.24 2.7 0.24 true
+CUBOID lamp_west_north_arm wood -3.3 2.58 -4.0 1.0 0.15 0.15 false
+CUBOID lamp_west_north_light gold -2.8 2.32 -4.0 0.36 0.4 0.36 false
+
+CUBOID lamp_east_north_post wood 3.8 1.35 -4.0 0.24 2.7 0.24 true
+CUBOID lamp_east_north_arm wood 3.3 2.58 -4.0 1.0 0.15 0.15 false
+CUBOID lamp_east_north_light gold 2.8 2.32 -4.0 0.36 0.4 0.36 false

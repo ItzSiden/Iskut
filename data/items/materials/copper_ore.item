@@ -1,0 +1,9 @@
+id=copper_ore
+name=Copper Ore
+description=Common ore used in early crafting recipes.
+category=material
+rarity=COMMON
+max_stack=99
+icon=CU
+sell_price=2
+tag=material

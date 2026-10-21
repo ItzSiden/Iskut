@@ -1,0 +1,13 @@
+# Iskut entity model v1. Coordinates are local to the feet origin; rotation is degrees.
+SKYVOXEL_ENTITY_MODEL 1
+NAME Astral_Traveler
+HEIGHT 1.84
+PART leg_left navy -0.16 0.36 0.00 0.24 0.72 0.30 0
+PART leg_right navy 0.16 0.36 0.00 0.24 0.72 0.30 0
+PART torso blue 0.00 1.08 0.00 0.58 0.62 0.34 0
+PART shoulder_trim gold 0.00 1.38 0.00 0.64 0.12 0.38 0
+PART head skin 0.00 1.63 -0.01 0.40 0.40 0.40 0
+PART hair dark 0.00 1.81 -0.01 0.42 0.12 0.42 0
+PART arm_left blue -0.39 1.10 0.00 0.20 0.58 0.25 0
+PART arm_right blue 0.39 1.10 0.00 0.20 0.58 0.25 0
+PART pack brown 0.00 1.18 0.22 0.34 0.42 0.15 0

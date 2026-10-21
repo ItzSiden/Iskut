@@ -1,0 +1,360 @@
+{
+	"format_version": "26.3",
+	"credit": "Converted to Blockbench Minecraft Java Block/Item JSON from the original Iskut model; open/save with Blockbench.",
+	"texture_size": [
+		8,
+		8
+	],
+	"textures": {
+		"mushroom": "azure_mushroom/mushroom",
+		"cream": "azure_mushroom/cream",
+		"cyan": "azure_mushroom/cyan"
+	},
+	"elements": [
+		{
+			"name": "stem",
+			"from": [
+				7.04,
+				5.44,
+				7.04
+			],
+			"to": [
+				8.96,
+				8.8,
+				8.96
+			],
+			"faces": {
+				"up": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#cream"
+				},
+				"down": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#cream"
+				},
+				"south": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#cream"
+				},
+				"north": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#cream"
+				},
+				"west": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#cream"
+				},
+				"east": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#cream"
+				}
+			}
+		},
+		{
+			"name": "cap",
+			"from": [
+				5.52,
+				7.92,
+				5.68
+			],
+			"to": [
+				10.48,
+				10.48,
+				10.32
+			],
+			"faces": {
+				"up": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#mushroom"
+				},
+				"down": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#mushroom"
+				},
+				"south": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#mushroom"
+				},
+				"north": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#mushroom"
+				},
+				"west": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#mushroom"
+				},
+				"east": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#mushroom"
+				}
+			}
+		},
+		{
+			"name": "cap_spot_a",
+			"from": [
+				6.52,
+				9.4,
+				10.272
+			],
+			"to": [
+				7.24,
+				9.96,
+				10.56
+			],
+			"faces": {
+				"up": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#cream"
+				},
+				"down": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#cream"
+				},
+				"south": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#cream"
+				},
+				"north": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#cream"
+				},
+				"west": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#cream"
+				},
+				"east": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#cream"
+				}
+			}
+		},
+		{
+			"name": "cap_spot_b",
+			"from": [
+				8.68,
+				9.68,
+				10.272
+			],
+			"to": [
+				9.24,
+				10.16,
+				10.56
+			],
+			"faces": {
+				"up": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#cyan"
+				},
+				"down": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#cyan"
+				},
+				"south": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#cyan"
+				},
+				"north": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#cyan"
+				},
+				"west": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#cyan"
+				},
+				"east": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#cyan"
+				}
+			}
+		},
+		{
+			"name": "gill",
+			"from": [
+				6.4,
+				7.672,
+				8.24
+			],
+			"to": [
+				9.6,
+				8.072,
+				10.16
+			],
+			"faces": {
+				"up": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#cream"
+				},
+				"down": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#cream"
+				},
+				"south": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#cream"
+				},
+				"north": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#cream"
+				},
+				"west": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#cream"
+				},
+				"east": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#cream"
+				}
+			}
+		}
+	]
+}

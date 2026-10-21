@@ -1,0 +1,137 @@
+SKYVOXEL_STRUCTURE 1
+NAME Blacksmith_Forge
+# Exterior only. Door faces E.
+
+# =========================================================
+# FOUNDATION
+# =========================================================
+CUBOID smithy_plinth stone_dark 0 0.3 0 9.8 0.6 7.8 true
+CUBOID smithy_plinth_trim stone_light 0 0.62 0 9.4 0.12 7.4 true
+CUBOID smithy_yard_pad stone 0 0.06 -5.1 8.4 0.24 3.6 true
+
+# =========================================================
+# BODY + TIMBER FRAME
+# =========================================================
+CUBOID smithy_body brick 0 2.5 0 9 5 7 true
+CUBOID smithy_belt stone_light 0 2.55 0 9.2 0.35 7.2 true
+CUBOID smithy_belt_hi stone_light 0 4.35 0 9.2 0.25 7.2 true
+CUBOID smithy_post_ne wood 4.3 3.0 -3.2 0.6 6.0 0.6 true
+CUBOID smithy_post_nw wood -4.3 3.0 -3.2 0.6 6.0 0.6 true
+CUBOID smithy_post_se wood 4.3 3.0 3.2 0.6 6.0 0.6 true
+CUBOID smithy_post_sw wood -4.3 3.0 3.2 0.6 6.0 0.6 true
+CUBOID smithy_brace_n wood -4.15 4.2 -3.4 0.4 0.4 0.4 false
+CUBOID smithy_brace_s wood 4.15 4.2 3.4 0.4 0.4 0.4 false
+
+# =========================================================
+# ROOF (6 stepped tiers + gold ridge + finial)
+# =========================================================
+CUBOID smithy_roof1 stone_dark 0 5.25 0 9.8 0.5 7.8 true
+CUBOID smithy_roof2 stone_dark 0 5.70 0 8.8 0.4 6.8 true
+CUBOID smithy_roof3 stone_dark 0 6.05 0 7.6 0.4 5.6 true
+CUBOID smithy_roof4 stone_dark 0 6.40 0 6.4 0.35 4.4 true
+CUBOID smithy_roof5 stone_dark 0 6.72 0 5.0 0.3 3.0 true
+CUBOID smithy_roof6 stone_dark 0 6.98 0 3.4 0.28 1.8 true
+CUBOID smithy_ridge gold 0 7.18 0 3.8 0.18 0.3 false
+CUBOID smithy_finial gold 0 7.38 0 0.6 0.5 0.6 false
+CUBOID smithy_finial_top crystal 0 7.80 0 0.35 0.4 0.35 false
+
+# =========================================================
+# CHIMNEY
+# =========================================================
+CUBOID smithy_chimney stone_dark 2.8 7.0 -2.0 1.4 4.2 1.4 true
+CUBOID smithy_chimney_band stone_light 2.8 8.9 -2.0 1.6 0.3 1.6 true
+CUBOID smithy_chimney_rim stone_dark 2.8 9.15 -2.0 1.7 0.3 1.7 true
+CUBOID smithy_chimney_cap stone 2.8 9.42 -2.0 1.9 0.18 1.9 true
+
+# =========================================================
+# EAST FACE — ENTRANCE (recessed, no interactive door)
+# =========================================================
+CUBOID smithy_door_recess slate 4.52 1.65 0 0.12 2.6 1.8 false
+CUBOID smithy_jamb_n stone_light 4.60 1.75 -1.05 0.22 3.0 0.30 false
+CUBOID smithy_jamb_s stone_light 4.60 1.75 1.05 0.22 3.0 0.30 false
+CUBOID smithy_lintel stone_light 4.60 3.40 0 0.22 0.32 2.4 false
+CUBOID smithy_keystone gold 4.60 3.72 0 0.20 0.32 0.42 false
+CUBOID smithy_step_low stone 4.86 0.15 0 0.45 0.3 2.2 false
+
+# =========================================================
+# EAST FACE — SIGN + BANNERS + LANTERNS
+# =========================================================
+CUBOID smithy_sign_back slate 4.56 4.35 0 0.16 0.85 3.0 false
+CUBOID smithy_sign gold 4.68 4.35 0 0.06 0.6 2.6 false
+CUBOID smithy_banner_n violet 4.52 3.9 -2.4 0.08 2.2 0.8 false
+CUBOID smithy_banner_s violet 4.52 3.9 2.4 0.08 2.2 0.8 false
+CUBOID smithy_lantern_n_bracket wood 4.58 2.85 -1.55 0.18 0.10 0.30 false
+CUBOID smithy_lantern_n gold 4.66 2.55 -1.55 0.30 0.45 0.30 false
+CUBOID smithy_lantern_s_bracket wood 4.58 2.85 1.55 0.18 0.10 0.30 false
+CUBOID smithy_lantern_s gold 4.66 2.55 1.55 0.30 0.45 0.30 false
+
+# =========================================================
+# WINDOWS (slate frame + cyan pane)
+# =========================================================
+CUBOID smithy_win_e1_frame slate 4.56 3.30 -2.6 0.12 1.2 1.2 false
+CUBOID smithy_win_e1_glass cyan 4.63 3.30 -2.6 0.06 0.9 0.9 false
+CUBOID smithy_win_e2_frame slate 4.56 3.30 2.6 0.12 1.2 1.2 false
+CUBOID smithy_win_e2_glass cyan 4.63 3.30 2.6 0.06 0.9 0.9 false
+CUBOID smithy_win_s1_frame slate -2.5 3.30 3.56 1.2 1.2 0.12 false
+CUBOID smithy_win_s1_glass cyan -2.5 3.30 3.63 0.9 0.9 0.06 false
+CUBOID smithy_win_s2_frame slate 2.5 3.30 3.56 1.2 1.2 0.12 false
+CUBOID smithy_win_s2_glass cyan 2.5 3.30 3.63 0.9 0.9 0.06 false
+CUBOID smithy_win_w_frame slate -4.56 3.30 0 0.12 1.2 1.2 false
+CUBOID smithy_win_w_glass cyan -4.63 3.30 0 0.06 0.9 0.9 false
+CUBOID smithy_win_n1_frame slate -2.5 3.30 -3.56 1.2 1.2 0.12 false
+CUBOID smithy_win_n1_glass cyan -2.5 3.30 -3.63 0.9 0.9 0.06 false
+
+# =========================================================
+# NORTH FORGE SHED
+# =========================================================
+CUBOID smithy_shed_post_ne wood 3.8 1.6 -6.4 0.5 3.2 0.5 true
+CUBOID smithy_shed_post_nw wood -3.8 1.6 -6.4 0.5 3.2 0.5 true
+CUBOID smithy_shed_post_se wood 3.8 1.6 -3.9 0.5 3.2 0.5 true
+CUBOID smithy_shed_post_sw wood -3.8 1.6 -3.9 0.5 3.2 0.5 true
+CUBOID smithy_shed_beam_n wood 0 3.05 -6.4 8.0 0.3 0.3 false
+CUBOID smithy_shed_beam_s wood 0 3.05 -3.9 8.0 0.3 0.3 false
+CUBOID smithy_shed_roof stone_dark 0 3.40 -5.15 8.4 0.35 3.0 true
+CUBOID smithy_shed_ridge gold 0 3.62 -5.15 8.4 0.15 0.25 false
+
+# =========================================================
+# FORGE (fire + hood + flue)
+# =========================================================
+CUBOID smithy_forge_base stone_dark 2.4 0.55 -5.3 1.7 1.1 1.7 true
+CUBOID smithy_forge_rim stone 2.4 1.18 -5.3 1.9 0.18 1.9 false
+CUBOID smithy_forge_fire violet 2.4 1.32 -5.3 1.1 0.3 1.1 false
+CUBOID smithy_forge_hood brick 2.4 2.45 -5.3 1.9 0.75 1.9 true
+CUBOID smithy_forge_hood_trim gold 2.4 2.05 -5.3 2.0 0.10 2.0 false
+CUBOID smithy_forge_flue stone_dark 2.4 3.35 -5.3 0.85 1.3 0.85 true
+
+# =========================================================
+# ANVIL — INTERACTIVE
+# =========================================================
+CUBOID smithy_anvil_stump wood -1.4 0.45 -5.3 0.85 0.9 0.85 true
+CUBOID smithy_anvil stone_dark -1.4 1.05 -5.3 1.4 0.3 0.7 false
+INTERACT smithy_anvil PORTAL Blacksmith_Anvil Anvil_rings_out_as_you_strike_the_glowing_iron.
+CUBOID smithy_anvil_horn stone_dark -0.55 1.05 -5.3 0.5 0.25 0.35 false
+CUBOID smithy_anvil_ingot gold -1.4 1.28 -5.3 0.35 0.14 0.16 false
+
+# =========================================================
+# QUENCH TROUGH + COAL
+# =========================================================
+CUBOID smithy_trough wood -3.5 0.35 -5.3 1.3 0.7 1.0 true
+CUBOID smithy_trough_rim slate -3.5 0.72 -5.3 1.4 0.10 1.1 false
+CUBOID smithy_trough_water cyan -3.5 0.66 -5.3 1.0 0.12 0.7 false
+CUBOID smithy_coal_pile slate 0.6 0.30 -4.3 1.1 0.6 1.0 true
+CUBOID smithy_coal_scatter slate 1.3 0.10 -3.7 0.8 0.12 0.6 false
+
+# =========================================================
+# YARD PROPS
+# =========================================================
+CUBOID smithy_barrel_1 wood 4.6 0.55 1.6 0.9 1.1 0.9 true
+CUBOID smithy_barrel_2 wood 4.6 0.55 2.7 0.9 1.1 0.9 true
+CUBOID smithy_barrel_band gold 4.6 0.85 1.6 0.95 0.08 0.95 false
+CUBOID smithy_crate wood -4.7 0.50 -2.6 1.1 1.0 1.1 true
+CUBOID smithy_crate_2 wood -4.7 1.55 -2.6 0.9 0.9 0.9 true
+CUBOID smithy_cart_wheel wood -4.6 0.75 -5.6 0.9 0.9 0.2 false
+CUBOID smithy_cart_hub gold -4.6 0.75 -5.6 0.25 0.25 0.26 false
+CUBOID smithy_hitch_post wood 5.4 0.9 3.6 0.4 1.8 0.4 true
+CUBOID smithy_hitch_cap stone_dark 5.4 1.9 3.6 0.5 0.15 0.5 false
+CUBOID smithy_wood_stack wood -3.6 0.40 -2.7 2.0 0.8 0.8 true
+CUBOID smithy_wood_stack_2 wood -3.6 1.20 -2.7 1.6 0.8 0.7 true

@@ -1,0 +1,9 @@
+id=sky_shard
+name=Sky Shard
+description=A pale fragment crystallized from the island's old magic.
+category=material
+rarity=UNCOMMON
+max_stack=99
+icon=SS
+sell_price=3
+tag=material

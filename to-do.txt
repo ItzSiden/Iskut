@@ -1,0 +1,12 @@
+1. Fix Hand
+2. Fix Entity Nametag
+3. Fix Sky
+4. Fix Item Models
+5. Fix UI
+6. Fix default controlls
+7. Fix texture steaching in models
+8. Fix item thumbnails on inventory and hotbars
+
+New:
+1. Add settings
+2. Add smooth lighting

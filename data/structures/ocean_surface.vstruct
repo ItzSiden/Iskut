@@ -1,0 +1,5 @@
+# Dedicated ocean surface: a single +Y-facing plane at local Y=0.
+# The main_hub.vmap places this structure at world Y=1.0. This object is visual-only.
+SKYVOXEL_STRUCTURE 1
+NAME Ocean_Surface
+PLANE ocean_water water 0 0 0 1024 1024

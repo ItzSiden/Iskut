@@ -1,0 +1,7 @@
+SKYVOXEL_STRUCTURE 1
+NAME General_Store_Placeholder
+# PLACEHOLDER - door faces north (harbour road)
+CUBOID store_body wood_light 0 2.5 0 9 5 7 true
+CUBOID store_roof roof_red 0 5.25 0 9.8 0.5 7.8 true
+CUBOID store_door gold 0 1.1 -3.52 1.6 2.2 0.12 false
+CUBOID store_sign gold 0 3.6 -3.55 3.2 0.7 0.12 false

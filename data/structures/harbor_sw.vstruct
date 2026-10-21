@@ -1,0 +1,8 @@
+SKYVOXEL_STRUCTURE 1
+NAME Harbor_SW_Placeholder
+# PLACEHOLDER group: harbor_sw
+CUBOID warehouse_body wood 4 2.5 46 8 5 6 true
+CUBOID warehouse_roof stone_dark 4 5.25 46 8.8 0.5 6.8 true
+CUBOID warehouse_roof2 stone_dark 4 5.7 46 7.2 0.4 5.2 true
+CUBOID warehouse_door gold -0.02 1.1 46 0.12 2.2 1.6 false
+CUBOID warehouse_sign gold -0.05 3.4 46 0.12 0.6 3 false

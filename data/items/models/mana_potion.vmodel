@@ -1,0 +1,59 @@
+# Iskut self-contained pixel-textured model v2
+ISKUT_ITEM_MODEL 2
+NAME mana_potion
+HEIGHT 1
+
+# ---- Potion body: dark rim, light highlight, soft bubble ----
+TEXTURE potion 8 8
+PALETTE potion 0 #0654B8FF
+PALETTE potion 1 #0AADFFFF
+PALETTE potion 2 #1FBCFFFF
+PALETTE potion 3 #63CFFDFF
+PALETTE potion 4 #D4F6FFFF
+PIXEL potion 0 00000000
+PIXEL potion 1 04321110
+PIXEL potion 2 03221110
+PIXEL potion 3 03211110
+PIXEL potion 4 01111110
+PIXEL potion 5 01113110
+PIXEL potion 6 01111110
+PIXEL potion 7 00000000
+END_TEXTURE
+
+# ---- Glass: shoulder and neck ----
+TEXTURE glass 8 8
+PALETTE glass 0 #5FB8E0FF
+PALETTE glass 1 #9FDDF5FF
+PALETTE glass 2 #E0F8FFFF
+PIXEL glass 0 00000000
+PIXEL glass 1 02111110
+PIXEL glass 2 02111110
+PIXEL glass 3 02111110
+PIXEL glass 4 02111110
+PIXEL glass 5 01111110
+PIXEL glass 6 01111110
+PIXEL glass 7 00000000
+END_TEXTURE
+
+# ---- Cork ----
+TEXTURE brown 8 8
+PALETTE brown 0 #28190F
+PALETTE brown 1 #624022
+PALETTE brown 2 #A46E3D
+PALETTE brown 3 #D2A16B
+PALETTE brown . #00000000
+PIXEL brown 0 11111111
+PIXEL brown 1 12221221
+PIXEL brown 2 12221221
+PIXEL brown 3 11111111
+PIXEL brown 4 12212221
+PIXEL brown 5 12212221
+PIXEL brown 6 11111111
+PIXEL brown 7 12221221
+END_TEXTURE
+
+# ---- Parts (x y z sizeX sizeY sizeZ rot), bottom to top ----
+PART bottle_body   potion 0 0.12 0 0.26 0.24 0.26 0
+PART shoulder      glass  0 0.27 0 0.18 0.06 0.18 0
+PART bottle_neck   glass  0 0.34 0 0.11 0.08 0.11 0
+PART cork          brown  0 0.41 0 0.12 0.06 0.12 0

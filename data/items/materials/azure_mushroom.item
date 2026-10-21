@@ -1,0 +1,9 @@
+id=azure_mushroom
+name=Azure Mushroom
+description=A cool-blue mushroom used in beginner alchemy.
+category=material
+rarity=UNCOMMON
+max_stack=99
+icon=AM
+sell_price=5
+tag=material

@@ -1,0 +1,502 @@
+{
+	"format_version": "26.3",
+	"credit": "Converted to Blockbench Minecraft Java Block/Item JSON from the original Iskut model; open/save with Blockbench.",
+	"texture_size": [
+		8,
+		8
+	],
+	"textures": {
+		"red": "health_potion/red",
+		"ice": "health_potion/ice",
+		"silver": "health_potion/silver",
+		"brown": "health_potion/brown",
+		"gold": "health_potion/gold",
+		"white": "health_potion/white"
+	},
+	"elements": [
+		{
+			"name": "bottle_body",
+			"from": [
+				5.52,
+				5.28,
+				6.0
+			],
+			"to": [
+				10.48,
+				10.72,
+				10.0
+			],
+			"faces": {
+				"up": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#red"
+				},
+				"down": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#red"
+				},
+				"south": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#red"
+				},
+				"north": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#red"
+				},
+				"west": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#red"
+				},
+				"east": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#red"
+				}
+			}
+		},
+		{
+			"name": "bottle_shoulder",
+			"from": [
+				6.08,
+				9.68,
+				6.24
+			],
+			"to": [
+				9.92,
+				11.28,
+				9.76
+			],
+			"faces": {
+				"up": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#red"
+				},
+				"down": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#red"
+				},
+				"south": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#red"
+				},
+				"north": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#red"
+				},
+				"west": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#red"
+				},
+				"east": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#red"
+				}
+			}
+		},
+		{
+			"name": "potion_glass",
+			"from": [
+				6.16,
+				6.4,
+				9.88
+			],
+			"to": [
+				9.84,
+				10.24,
+				10.28
+			],
+			"faces": {
+				"up": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#ice"
+				},
+				"down": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#ice"
+				},
+				"south": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#white"
+				},
+				"north": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#ice"
+				},
+				"west": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#ice"
+				},
+				"east": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#ice"
+				}
+			}
+		},
+		{
+			"name": "bottle_neck",
+			"from": [
+				6.96,
+				10.96,
+				6.96
+			],
+			"to": [
+				9.04,
+				12.56,
+				9.04
+			],
+			"faces": {
+				"up": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#silver"
+				},
+				"down": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#silver"
+				},
+				"south": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#silver"
+				},
+				"north": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#silver"
+				},
+				"west": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#silver"
+				},
+				"east": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#silver"
+				}
+			}
+		},
+		{
+			"name": "cork",
+			"from": [
+				6.88,
+				12.4,
+				6.88
+			],
+			"to": [
+				9.12,
+				13.52,
+				9.12
+			],
+			"faces": {
+				"up": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#brown"
+				},
+				"down": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#brown"
+				},
+				"south": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#brown"
+				},
+				"north": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#brown"
+				},
+				"west": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#brown"
+				},
+				"east": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#brown"
+				}
+			}
+		},
+		{
+			"name": "neck_band",
+			"from": [
+				6.8,
+				11.48,
+				8.92
+			],
+			"to": [
+				9.2,
+				12.04,
+				9.32
+			],
+			"faces": {
+				"up": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#gold"
+				},
+				"down": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#gold"
+				},
+				"south": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#gold"
+				},
+				"north": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#gold"
+				},
+				"west": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#gold"
+				},
+				"east": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#gold"
+				}
+			}
+		},
+		{
+			"name": "seal",
+			"from": [
+				7.2,
+				6.72,
+				10.144
+			],
+			"to": [
+				8.8,
+				8.64,
+				10.432
+			],
+			"faces": {
+				"up": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#white"
+				},
+				"down": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#white"
+				},
+				"south": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#red",
+					"rotation": 90
+				},
+				"north": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#white"
+				},
+				"west": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#white"
+				},
+				"east": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#white"
+				}
+			}
+		}
+	]
+}

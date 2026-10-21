@@ -1,0 +1,25 @@
+SKYVOXEL_STRUCTURE 1
+NAME Merchant_Row
+CUBOID weaponsmith_floor slate -12.0 0.04 -6.5 5.2 0.08 4.8 false
+CUBOID weaponsmith_back brick -12.0 1.9 -8.6 5.2 3.6 0.35 true
+CUBOID weaponsmith_left_post wood -14.4 1.9 -6.5 0.35 3.6 4.6 true
+CUBOID weaponsmith_right_post wood -9.6 1.9 -6.5 0.35 3.6 4.6 true
+CUBOID weaponsmith_roof roof_red -12.0 3.8 -6.5 5.8 0.6 5.2 true
+CUBOID weaponsmith_counter wood_light -12.0 0.6 -5.7 3.8 1.1 0.75 true
+CUBOID weaponsmith_sign gold -12.0 3.3 -5.6 2.8 0.6 0.18 false
+CUBOID weaponsmith_npc wood_light -12.0 1.0 -7.4 0.6 1.5 0.6 true
+CUBOID weaponsmith_npc_head stone_light -12.0 1.95 -7.4 0.5 0.5 0.5 true
+INTERACT weaponsmith_counter SHOP Weaponsmith_Stall Welcome_to_the_Weapon_Forge._Inventory_coming_soon.
+INTERACT weaponsmith_npc SHOP Weaponsmith_Stall Welcome_to_the_Weapon_Forge._Inventory_coming_soon.
+
+CUBOID archivist_floor slate 12.0 0.04 -6.5 5.2 0.08 4.8 false
+CUBOID archivist_back slate 12.0 1.9 -8.6 5.2 3.6 0.35 true
+CUBOID archivist_left_post wood 9.6 1.9 -6.5 0.35 3.6 4.6 false
+CUBOID archivist_right_post wood 14.4 1.9 -6.5 0.35 3.6 4.6 false
+CUBOID archivist_roof roof_blue 12.0 3.8 -6.5 5.8 0.6 5.2 true
+CUBOID archivist_counter wood_light 12.0 0.6 -5.7 3.8 1.1 0.75 true
+CUBOID archivist_sign crystal 12.0 3.3 -5.6 2.8 0.6 0.18 false
+CUBOID archivist_npc violet 12.0 1.0 -7.4 0.6 1.5 0.6 true
+CUBOID archivist_npc_head stone_light 12.0 1.95 -7.4 0.5 0.5 0.5 true
+INTERACT archivist_counter NPC Archivist Greetings_traveler._Ask_me_about_the_history_of_this_hub.
+INTERACT archivist_npc NPC Archivist Greetings_traveler._Ask_me_about_the_history_of_this_hub.

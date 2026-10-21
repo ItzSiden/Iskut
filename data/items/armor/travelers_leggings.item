@@ -1,0 +1,13 @@
+id=traveler_leggings
+name=Traveler's Leggings
+description=Light leggings reinforced at the knees.
+category=armor
+rarity=COMMON
+max_stack=1
+icon=LG
+equipment_slot=LEGGINGS
+sell_price=28
+modifier=max_health|FLAT|8
+modifier=defense|FLAT|5
+tag=starter
+tag=armor

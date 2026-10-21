@@ -1,0 +1,10 @@
+id=wisp_essence
+name=Wisp Essence
+description=Residual energy left behind by a defeated Sky Wisp.
+category=material
+rarity=RARE
+max_stack=64
+icon=WE
+sell_price=15
+modifier=mana_regen|FLAT|0
+tag=material

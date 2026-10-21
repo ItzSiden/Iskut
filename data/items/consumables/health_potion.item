@@ -1,0 +1,10 @@
+id=health_potion
+name=Health Potion
+description=Restores 35 health when consumed.
+category=consumable
+rarity=COMMON
+max_stack=64
+icon=HP
+sell_price=5
+tag=potion
+use_effect=HEAL|35

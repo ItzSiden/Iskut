@@ -1,0 +1,9 @@
+id=drift_leather
+name=Drift Leather
+description=Weathered hide collected from creatures near the outer islands.
+category=material
+rarity=COMMON
+max_stack=99
+icon=DL
+sell_price=3
+tag=material

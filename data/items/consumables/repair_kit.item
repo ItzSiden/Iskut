@@ -1,0 +1,9 @@
+id=repair_kit
+name=Repair Kit
+description=A compact kit used to maintain damaged equipment.
+category=consumable
+rarity=UNCOMMON
+max_stack=16
+icon=RK
+sell_price=14
+tag=consumable

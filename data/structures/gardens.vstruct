@@ -1,0 +1,30 @@
+SKYVOXEL_STRUCTURE 1
+NAME Garden_Planters
+CUBOID planter_nw stone_dark -14.5 0.3 12.0 3.2 0.6 3.2 true
+CUBOID planter_nw_soil grass -14.5 0.62 12.0 2.9 0.06 2.9 false
+CUBOID tree_nw_trunk wood -14.5 1.5 12.0 0.6 1.8 0.6 true
+CUBOID tree_nw_canopy leaves -14.5 2.8 12.0 2.4 2.0 2.2 false
+CUBOID tree_nw_cap moss -14.5 3.9 12.0 1.6 0.5 1.6 false
+
+CUBOID planter_ne stone_dark 14.5 0.3 12.0 3.2 0.6 3.2 true
+CUBOID planter_ne_soil grass 14.5 0.62 12.0 2.9 0.06 2.9 false
+CUBOID tree_ne_trunk wood 14.5 1.5 12.0 0.6 1.8 0.6 true
+CUBOID tree_ne_canopy leaves 14.5 2.8 12.0 2.4 2.0 2.2 false
+CUBOID tree_ne_cap moss 14.5 3.9 12.0 1.6 0.5 1.6 false
+
+CUBOID planter_sw stone_dark -14.5 0.3 -12.0 3.2 0.6 3.2 true
+CUBOID planter_sw_soil grass -14.5 0.62 -12.0 2.9 0.06 2.9 false
+CUBOID tree_sw_trunk wood -14.5 1.5 -12.0 0.6 1.8 0.6 true
+CUBOID tree_sw_canopy leaves -14.5 2.8 -12.0 2.4 2.0 2.2 false
+CUBOID tree_sw_cap moss -14.5 3.9 -12.0 1.6 0.5 1.6 false
+
+CUBOID planter_se stone_dark 14.5 0.3 -12.0 3.2 0.6 3.2 true
+CUBOID planter_se_soil grass 14.5 0.62 -12.0 2.9 0.06 2.9 false
+CUBOID tree_se_trunk wood 14.5 1.5 -12.0 0.6 1.8 0.6 true
+CUBOID tree_se_canopy leaves 14.5 2.8 -12.0 2.4 2.0 2.2 false
+CUBOID tree_se_cap moss 14.5 3.9 -12.0 1.6 0.5 1.6 false
+
+CUBOID west_monolith slate -7.5 1.1 3.0 0.5 2.2 0.5 true
+CUBOID west_monolith_gem crystal -7.5 2.3 3.0 0.7 0.5 0.7 false
+CUBOID east_monolith slate 7.5 1.1 3.0 0.5 2.2 0.5 true
+CUBOID east_monolith_gem violet 7.5 2.3 3.0 0.7 0.5 0.7 false

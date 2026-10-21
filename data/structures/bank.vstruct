@@ -1,0 +1,8 @@
+SKYVOXEL_STRUCTURE 1
+NAME Bank_Placeholder
+# PLACEHOLDER - door faces E
+CUBOID bank_body stone_light 0 3.5 0 10 7 8 true
+CUBOID bank_roof stone_dark 0 7.25 0 10.8 0.5 8.8 true
+CUBOID bank_roof2 stone_dark 0 7.7 0 9.2 0.4 7.2 true
+CUBOID bank_door gold 5.02 1.1 0 0.12 2.2 1.6 false
+CUBOID bank_sign gold 5.05 3.4 0 0.12 0.6 3 false

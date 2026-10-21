@@ -1,0 +1,9 @@
+id=lumen_wood
+name=Lumen Wood
+description=Lightweight timber with faintly luminous grain.
+category=material
+rarity=COMMON
+max_stack=99
+icon=LW
+sell_price=2
+tag=material

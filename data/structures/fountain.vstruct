@@ -1,0 +1,8 @@
+SKYVOXEL_STRUCTURE 1
+NAME Side_Fountain
+CUBOID fountain_base stone_dark -6.0 0.15 2.0 3.6 0.3 3.6 true
+CUBOID fountain_bowl stone_light -6.0 0.48 2.0 3.0 0.32 3.0 false
+CUBOID fountain_water water -6.0 0.68 2.0 2.4 0.06 2.4 false
+CUBOID fountain_column slate -6.0 1.05 2.0 0.6 0.68 0.6 true
+CUBOID fountain_crystal crystal -6.0 1.62 2.0 0.8 0.7 0.8 false
+CUBOID fountain_ring gold -6.0 1.42 2.0 1.1 0.1 1.1 false

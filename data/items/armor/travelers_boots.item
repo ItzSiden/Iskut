@@ -1,0 +1,14 @@
+id=traveler_boots
+name=Traveler's Boots
+description=Comfortable boots with a little extra spring.
+category=armor
+rarity=COMMON
+max_stack=1
+icon=BT
+equipment_slot=BOOTS
+sell_price=22
+modifier=max_health|FLAT|6
+modifier=defense|FLAT|4
+modifier=movement_speed|PERCENT|0.03
+tag=starter
+tag=armor

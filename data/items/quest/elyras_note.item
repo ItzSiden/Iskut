@@ -1,0 +1,9 @@
+id=elyras_note
+name=Elyra's Note
+description=A folded note from the guide. Its seal is still warm.
+category=quest
+rarity=SPECIAL
+max_stack=1
+icon=NT
+sell_price=0
+tag=quest

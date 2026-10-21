@@ -1,0 +1,12 @@
+# SkyVoxel entity model v1
+SKYVOXEL_ENTITY_MODEL 1
+NAME Wisp
+HEIGHT 1.35
+PART core red 0 0.58 0 0.78 0.7 0.72 0
+PART crown cyan 0 0.9 0 0.38 0.2 0.38 45
+PART eye_left white -0.18 0.68 0.368 0.14 0.14 0.06 0
+PART eye_right white 0.18 0.68 0.368 0.14 0.14 0.06 0
+PART pupil_left dark -0.18 0.68 0.406 0.06 0.08 0.05 0
+PART pupil_right dark 0.18 0.68 0.406 0.06 0.08 0.05 0
+PART fin_left cyan -0.36 0.57 0 0.22 0.24 0.34 25
+PART fin_right cyan 0.36 0.57 0 0.22 0.24 0.34 -25

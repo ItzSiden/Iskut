@@ -1,0 +1,6 @@
+# Example only; not placed in main_hub.vmap.
+# MODEL position x/y/z is the Blockbench model center in structure-local world units.
+# Scale is per axis; rotation angles are degrees and apply X, then Y, then Z (engine Rz*Ry*Rx convention).
+SKYVOXEL_STRUCTURE 1
+NAME Blockbench_Model_Example
+MODEL stone_example ../blocks/models/stone_block.json 0 0.625 0 2.0 1.25 0.75 true 10 35 0

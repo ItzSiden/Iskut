@@ -1,0 +1,9 @@
+id=old_compass
+name=Old Compass
+description=Its needle points toward something that is no longer on any map.
+category=quest
+rarity=SPECIAL
+max_stack=1
+icon=CP
+sell_price=0
+tag=quest

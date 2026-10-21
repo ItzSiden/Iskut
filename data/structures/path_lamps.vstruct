@@ -1,0 +1,36 @@
+SKYVOXEL_STRUCTURE 1
+NAME Path_Lamps
+# Lamp posts along the main trails
+CUBOID lamp0_post wood -1.479 1.2 21.453 0.22 2.4 0.22 true
+CUBOID lamp0_light gold -1.479 2.55 21.453 0.5 0.5 0.5 false
+CUBOID lamp0_cap stone_dark -1.479 2.9 21.453 0.7 0.12 0.7 false
+CUBOID lamp2_post wood -3.544 1.2 37.612 0.22 2.4 0.22 true
+CUBOID lamp2_light gold -3.544 2.55 37.612 0.5 0.5 0.5 false
+CUBOID lamp2_cap stone_dark -3.544 2.9 37.612 0.7 0.12 0.7 false
+CUBOID lamp3_post wood -6.203 1.2 46.907 0.22 2.4 0.22 true
+CUBOID lamp3_light gold -6.203 2.55 46.907 0.5 0.5 0.5 false
+CUBOID lamp3_cap stone_dark -6.203 2.9 46.907 0.7 0.12 0.7 false
+CUBOID lamp4_post wood -15.126 1.2 48.195 0.22 2.4 0.22 true
+CUBOID lamp4_light gold -15.126 2.55 48.195 0.5 0.5 0.5 false
+CUBOID lamp4_cap stone_dark -15.126 2.9 48.195 0.7 0.12 0.7 false
+CUBOID lamp5_post wood 7.43 1.2 15.504 0.22 2.4 0.22 true
+CUBOID lamp5_light gold 7.43 2.55 15.504 0.5 0.5 0.5 false
+CUBOID lamp5_cap stone_dark 7.43 2.9 15.504 0.7 0.12 0.7 false
+CUBOID lamp7_post wood 27.421 1.2 18.675 0.22 2.4 0.22 true
+CUBOID lamp7_light gold 27.421 2.55 18.675 0.5 0.5 0.5 false
+CUBOID lamp7_cap stone_dark 27.421 2.9 18.675 0.7 0.12 0.7 false
+CUBOID lamp8_post wood 35.726 1.2 26.043 0.22 2.4 0.22 true
+CUBOID lamp8_light gold 35.726 2.55 26.043 0.5 0.5 0.5 false
+CUBOID lamp8_cap stone_dark 35.726 2.9 26.043 0.7 0.12 0.7 false
+CUBOID lamp9_post wood 45.93 1.2 24.599 0.22 2.4 0.22 true
+CUBOID lamp9_light gold 45.93 2.55 24.599 0.5 0.5 0.5 false
+CUBOID lamp9_cap stone_dark 45.93 2.9 24.599 0.7 0.12 0.7 false
+CUBOID lamp10_post wood -7.749 1.2 -3.728 0.22 2.4 0.22 true
+CUBOID lamp10_light gold -7.749 2.55 -3.728 0.5 0.5 0.5 false
+CUBOID lamp10_cap stone_dark -7.749 2.9 -3.728 0.7 0.12 0.7 false
+CUBOID lamp11_post wood -19.399 1.2 -3.642 0.22 2.4 0.22 true
+CUBOID lamp11_light gold -19.399 2.55 -3.642 0.5 0.5 0.5 false
+CUBOID lamp11_cap stone_dark -19.399 2.9 -3.642 0.7 0.12 0.7 false
+CUBOID lamp12_post wood -17.584 1.2 -15.548 0.22 2.4 0.22 true
+CUBOID lamp12_light gold -17.584 2.55 -15.548 0.5 0.5 0.5 false
+CUBOID lamp12_cap stone_dark -17.584 2.9 -15.548 0.7 0.12 0.7 false

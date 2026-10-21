@@ -1,0 +1,14 @@
+id=training_blade
+name=Training Blade
+description=A dependable starter weapon. Not fancy, but it gets the job done.
+category=weapon
+rarity=COMMON
+max_stack=1
+icon=SW
+equipment_slot=WEAPON
+base_damage=8
+sell_price=24
+modifier=strength|FLAT|2
+modifier=attack_speed|FLAT|0
+tag=starter
+tag=melee

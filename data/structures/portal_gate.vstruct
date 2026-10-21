@@ -1,0 +1,71 @@
+SKYVOXEL_STRUCTURE 1
+NAME Sky_Gate
+
+# ========== APPROACH STEPS (ramp to platform top at y=1.0) ==========
+CUBOID portal_step_1 stone_dark 0 0.125 -9.5 9.0 0.25 1.0 true
+CUBOID portal_step_2 stone_dark 0 0.250 -10.5 9.0 0.50 1.0 true
+CUBOID portal_step_3 stone 0 0.375 -11.5 9.0 0.75 1.0 true
+CUBOID portal_step_4 stone_light 0 0.500 -12.5 9.0 1.00 1.0 true
+
+# ========== PLATFORM (grounded, 0.0 -> 1.0) ==========
+CUBOID portal_foundation stone_dark 0 0.30 -14.5 9.0 0.60 3.0 true
+CUBOID portal_platform stone_light 0 0.80 -14.5 9.0 0.40 3.0 true
+
+# ========== PILLARS ==========
+CUBOID portal_left_plinth stone_dark -3.5 1.30 -14.5 1.4 0.6 1.4 true
+CUBOID portal_left_shaft stone_light -3.5 3.30 -14.5 0.9 3.4 1.0 true
+CUBOID portal_left_capital stone_dark -3.5 5.30 -14.5 1.3 0.6 1.3 true
+CUBOID portal_left_abacus stone_light -3.5 5.75 -14.5 1.5 0.3 1.5 true
+CUBOID portal_right_plinth stone_dark 3.5 1.30 -14.5 1.4 0.6 1.4 true
+CUBOID portal_right_shaft stone_light 3.5 3.30 -14.5 0.9 3.4 1.0 true
+CUBOID portal_right_capital stone_dark 3.5 5.30 -14.5 1.3 0.6 1.3 true
+CUBOID portal_right_abacus stone_light 3.5 5.75 -14.5 1.5 0.3 1.5 true
+
+# ========== ARCH / BEAM / CORNICE / KEYSTONE ==========
+CUBOID portal_arch_band stone 0 5.65 -14.5 6.0 0.5 0.8 true
+CUBOID portal_top_beam stone_light 0 6.15 -14.5 8.0 0.6 1.0 true
+CUBOID portal_cornice stone_dark 0 6.55 -14.5 8.5 0.3 1.2 true
+CUBOID portal_keystone gold 0 6.55 -14.0 0.9 0.4 0.4 false
+
+# ========== INNER FRAME (now grounded) ==========
+CUBOID portal_left_inner slate -2.90 3.05 -14.35 0.20 4.10 0.35 true
+CUBOID portal_right_inner slate 2.90 3.05 -14.35 0.20 4.10 0.35 true
+CUBOID portal_inner_top slate 0 5.25 -14.35 6.0 0.30 0.35 true
+CUBOID portal_inner_bottom slate 0 1.25 -14.35 6.0 0.50 0.35 true
+
+# ========== PORTAL CORE ==========
+CUBOID portal_core portal 0 3.30 -14.6 5.6 3.6 0.18 true
+INTERACT portal_core PORTAL Sky_Gate Portal_is_active._Step_through_to_explore_new_realms.
+
+# ========== GOLD TRIM ==========
+CUBOID portal_side_trim_left gold -3.5 3.30 -13.90 0.15 3.4 0.15 false
+CUBOID portal_side_trim_right gold 3.5 3.30 -13.90 0.15 3.4 0.15 false
+CUBOID portal_trim_top gold 0 5.45 -13.90 6.2 0.15 0.15 false
+
+# ========== GEMS ==========
+CUBOID portal_gem_top crystal 0 7.15 -14.5 0.9 0.9 0.9 false
+CUBOID portal_gem_halo crystal 0 7.15 -14.5 1.5 0.15 1.5 false
+CUBOID portal_gem_left violet -3.5 4.80 -13.90 0.5 0.5 0.5 false
+CUBOID portal_gem_right violet 3.5 4.80 -13.90 0.5 0.5 0.5 false
+CUBOID portal_gem_left_core cyan -3.5 4.80 -13.85 0.22 0.22 0.20 false
+CUBOID portal_gem_right_core cyan 3.5 4.80 -13.85 0.22 0.22 0.20 false
+
+# ========== BRAZIERS (flanking approach, on platform) ==========
+CUBOID portal_brazier_l_base stone_dark -3.5 1.30 -13.5 0.6 0.6 0.6 true
+CUBOID portal_brazier_l_bowl stone -3.5 1.65 -13.5 0.8 0.3 0.8 true
+CUBOID portal_brazier_l_fire violet -3.5 1.85 -13.5 0.5 0.2 0.5 false
+CUBOID portal_brazier_r_base stone_dark 3.5 1.30 -13.5 0.6 0.6 0.6 true
+CUBOID portal_brazier_r_bowl stone 3.5 1.65 -13.5 0.8 0.3 0.8 true
+CUBOID portal_brazier_r_fire violet 3.5 1.85 -13.5 0.5 0.2 0.5 false
+
+# ========== FLOATING CRYSTAL SHARDS ==========
+CUBOID portal_shard_l crystal -4.6 4.0 -13.5 0.3 0.7 0.3 false
+CUBOID portal_shard_r crystal 4.6 4.0 -13.5 0.3 0.7 0.3 false
+CUBOID portal_shard_tl crystal -2.2 8.0 -14.5 0.4 0.7 0.4 false
+CUBOID portal_shard_tr crystal 2.2 8.0 -14.5 0.4 0.7 0.4 false
+CUBOID portal_shard_top violet 0 8.5 -14.5 0.5 0.5 0.5 false
+
+# ========== FLOOR RUNE RING ==========
+CUBOID portal_ring_outer slate 0 1.03 -14.5 7.6 0.04 2.4 false
+CUBOID portal_ring_mid cyan 0 1.06 -14.5 6.6 0.02 2.0 false
+CUBOID portal_ring_inner slate 0 1.09 -14.5 5.4 0.02 1.6 false

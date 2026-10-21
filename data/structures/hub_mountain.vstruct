@@ -1,0 +1,8 @@
+SKYVOXEL_STRUCTURE 1
+NAME Hub_Mountain_Placeholder
+# PLACEHOLDER mountain - cave door faces north
+CUBOID mountain_t0 stone_dark 0 2 0 16 4 16 true
+CUBOID mountain_t1 stone 0 6 0 12 4 12 true
+CUBOID mountain_t2 slate 0 9.5 0 8 3 8 true
+CUBOID mountain_t3 stone_light 0 12 0 4 2 4 true
+CUBOID mountain_cave slate 0 1.4 -8.02 2.6 2.8 0.12 false

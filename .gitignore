@@ -1,0 +1,10 @@
+# Local player data is user/game state, not source assets.
+/saves/players/*.json
+/saves/players/*.json.bak
+/saves/players/*.tmp-*
+
+# Patch-install backups remain local and should not be committed.
+/.iskut-backups/
+/build-check/
+/.build-check/
+/data/cache/item-icons/

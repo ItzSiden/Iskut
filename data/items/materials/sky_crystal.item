@@ -1,0 +1,9 @@
+id=sky_crystal
+name=Sky Crystal
+description=A fragile crystal that hums when held near a portal.
+category=material
+rarity=RARE
+max_stack=64
+icon=SC
+sell_price=12
+tag=material

@@ -1,0 +1,9 @@
+id=cloud_fiber
+name=Cloud Fiber
+description=Fine strands gathered from floating plants.
+category=material
+rarity=UNCOMMON
+max_stack=99
+icon=CF
+sell_price=4
+tag=material

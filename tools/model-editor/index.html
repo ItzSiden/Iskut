@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171b1d">
+  <title>SkyVoxel Studio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="SkyVoxel Studio home"><span class="brand-mark">S</span><span>SKYVOXEL <b>STUDIO</b></span></a>
+    <div class="document-title"><span class="live-dot"></span><input id="assetName" value="Untitled_Model" aria-label="Asset name"><span id="formatBadge" class="format-badge">VMODEL</span></div>
+    <div class="top-actions">
+      <button id="undoBtn" class="icon-button" title="Undo (Ctrl+Z)" aria-label="Undo">↶</button>
+      <button id="redoBtn" class="icon-button" title="Redo (Ctrl+Y)" aria-label="Redo">↷</button>
+      <span class="toolbar-divider"></span>
+      <button id="importBtn" class="quiet-button">Import</button>
+      <button id="exportBtn" class="primary-button"><span>Export</span><span aria-hidden="true">↗</span></button>
+      <input id="fileInput" type="file" accept=".vmodel,.vstruct,.txt" hidden>
+    </div>
+  </header>
+  <main class="workspace">
+    <aside class="left-rail">
+      <div class="rail-label">WORKSPACE</div>
+      <button class="rail-tool active" data-tool="select" title="Select (Q)"><span>⌖</span><small>Select</small></button>
+      <button class="rail-tool" data-tool="move" title="Move (W)"><span>✣</span><small>Move</small></button>
+      <button class="rail-tool" data-tool="rotate" title="Rotate (E)"><span>⟳</span><small>Rotate</small></button>
+      <button class="rail-tool" data-tool="scale" title="Resize (R)"><span>⤢</span><small>Resize</small></button>
+      <div class="rail-rule"></div>
+      <button id="addPartBtn" class="rail-tool add-tool" title="Add cuboid"><span>＋</span><small>Add part</small></button>
+      <button id="voxelBtn" class="rail-tool" title="Click the ground to place a 1-unit voxel"><span>▦</span><small>Voxel</small></button>
+      <div class="rail-spacer"></div>
+      <button id="gridToggle" class="rail-tool active" title="Toggle grid"><span>▤</span><small>Grid</small></button>
+      <button id="frameBtn" class="rail-tool" title="Frame selection (F)"><span>⌗</span><small>Frame</small></button>
+    </aside>
+
+    <section class="outliner panel">
+      <div class="panel-heading"><div><span class="eyebrow">SCENE</span><h1>Outliner</h1></div><button id="outlinerAdd" class="small-icon" title="Add part">＋</button></div>
+      <div class="asset-kind"><label for="assetKind">ASSET FORMAT</label><select id="assetKind"><option value="entity">Entity model · .vmodel</option><option value="structure">Structure · .vstruct</option></select></div>
+      <div class="tree-heading"><span>OBJECTS</span><span id="partCount">00</span></div>
+      <label class="outliner-search"><span aria-hidden="true">⌕</span><input id="partSearch" type="search" placeholder="Find a part..." aria-label="Find a part"></label>
+      <div id="partList" class="part-list"></div>
+      <div class="outliner-foot"><span class="status-square"></span><span id="sceneStatus">Scene ready</span></div>
+    </section>
+
+    <section class="viewport-shell">
+      <div class="viewport-head"><div class="view-tabs"><button class="view-tab active">Perspective</button><span class="viewport-sep">/</span><span class="axis-label">Y</span><span class="axis-label axis-x">X</span><span class="axis-label axis-z">Z</span></div><div class="view-actions"><button id="mobileOutlinerBtn" class="view-button mobile-panel-button">Objects</button><button id="mobileInspectorBtn" class="view-button mobile-panel-button">Inspect</button><button id="frameAllBtn" class="view-button" title="Frame all parts (Home)">Frame all</button><button id="cameraHome" class="view-button" title="Reset camera">Home view</button><span id="toolHint" class="tool-hint">Q Select</span></div></div>
+      <div id="viewport" class="viewport"><div class="viewport-overlay"><span class="overlay-kicker">SKYVOXEL / EDITOR</span><span id="overlayMode">ENTITY MODEL</span></div><div class="camera-cube" aria-hidden="true"><span>Y</span><i></i><b>X</b></div><div class="view-coordinates">WORLD SPACE <span>·</span> METERS</div><div id="toast" class="toast" role="status"></div></div>
+      <footer class="viewport-footer"><span><kbd>WASD</kbd> Move · <kbd>Space / Shift</kbd> Up / down · <kbd>Ctrl</kbd> Fast</span><span><kbd>Left drag</kbd> Orbit · <kbd>Right drag</kbd> Pan · <kbd>Scroll</kbd> Zoom</span><span class="footer-spacer"></span><span id="selectionReadout">No selection</span></footer>
+    </section>
+
+    <aside class="inspector panel">
+      <div class="panel-heading"><div><span class="eyebrow">PROPERTIES</span><h1>Inspector</h1></div><span class="inspector-indicator">●</span></div>
+      <div class="inspector-tabs"><button id="modelTab" class="inspector-tab active" type="button">Model</button><button id="texturesTab" class="inspector-tab" type="button">Textures</button></div>
+      <div id="emptyInspector" class="empty-inspector"><div class="empty-glyph">◇</div><strong>Nothing selected</strong><span>Select a cuboid to edit its shape and material.</span></div>
+      <div id="inspectorContent" class="inspector-content" hidden>
+        <div class="selected-heading"><span class="selected-icon">▧</span><div><input id="partId" aria-label="Part ID"><small id="partType">CUBOID PART</small></div><button id="duplicateBtn" class="small-icon" title="Duplicate (Ctrl+D)">▢</button><button id="deleteBtn" class="small-icon danger-icon" title="Delete (Delete)">×</button></div>
+        <section class="property-section"><div class="section-title">TRANSFORM <span>LOCAL</span></div><div class="axis-fields"><label><span>X</span><input id="posX" type="number" step="0.1"></label><label><span>Y</span><input id="posY" type="number" step="0.1"></label><label><span>Z</span><input id="posZ" type="number" step="0.1"></label></div><div class="axis-fields size-fields"><label><span>W</span><input id="sizeX" type="number" min="0.05" step="0.1"></label><label><span>H</span><input id="sizeY" type="number" min="0.05" step="0.1"></label><label><span>D</span><input id="sizeZ" type="number" min="0.05" step="0.1"></label></div><label class="full-field"><span>YAW <em>DEGREES</em></span><input id="yaw" type="number" step="15"></label></section>
+        <section class="property-section"><div class="section-title">SURFACE</div><div id="materialSwatches" class="swatches"></div><label class="full-field material-select"><span>MATERIAL</span><select id="material"></select></label></section>
+        <section id="structureProperties" class="property-section structure-only" hidden><div class="section-title">COLLISION</div><label class="toggle-row"><span><b>Solid</b><small>Blocks player movement and targeting</small></span><input id="solid" type="checkbox"><i></i></label><div class="section-title interaction-title">INTERACTION</div><label class="toggle-row"><span><b>Interactable</b><small>Attach a game interaction to this part</small></span><input id="hasInteraction" type="checkbox"><i></i></label><div id="interactionFields" class="interaction-fields" hidden><label class="full-field"><span>TYPE</span><select id="interactionType"><option>INFO</option><option>COLLECT_CRYSTAL</option><option>PORTAL</option><option>NPC</option><option>SHOP</option></select></label><label class="full-field"><span>TITLE TOKEN</span><input id="interactionTitle" value="Object"></label><label class="full-field"><span>MESSAGE TOKEN</span><input id="interactionMessage" value="A_new_discovery"></label></div></section>
+      </div>
+      <div id="modelProperties" class="model-properties"><div class="section-title">MODEL SETTINGS</div><label class="full-field"><span>MODEL HEIGHT <em>UNITS</em></span><input id="modelHeight" type="number" min="0.1" step="0.05" value="1.8"></label><p>Parts are positioned relative to the feet origin.</p></div>
+      <section id="textureWorkspace" class="texture-workspace" hidden>
+        <div class="texture-heading"><div><span class="eyebrow">PIXEL AUTHORING</span><h2>Texture studio</h2></div><button id="addTextureBtn" class="small-icon" type="button" title="Create texture">＋</button></div>
+        <div id="texturePartList" class="texture-part-list" aria-label="Model parts"></div>
+        <div class="texture-face-grid" id="facePicker" aria-label="Cuboid faces"></div>
+        <label id="faceTextureField" class="full-field"><span>FACE TEXTURE</span><select id="faceTexture"></select></label>
+        <div class="face-options" id="faceOptions">
+          <label><span>ROTATION</span><select id="faceRotation"><option value="0">0°</option><option value="90">90°</option><option value="180">180°</option><option value="270">270°</option></select></label>
+          <label class="check-option"><input id="mirrorU" type="checkbox"><span>Mirror U</span></label>
+          <label class="check-option"><input id="mirrorV" type="checkbox"><span>Mirror V</span></label>
+        </div>
+        <div class="texture-controls">
+          <label class="full-field"><span>PIXEL TEXTURE</span><select id="textureSelect"></select></label>
+          <label class="size-control"><span>SIZE</span><select id="textureSize"><option>8</option><option selected>16</option><option>32</option><option>64</option><option>128</option></select></label>
+        </div>
+        <div class="paint-toolbar" role="toolbar" aria-label="Pixel tools">
+          <button type="button" data-paint-tool="pencil" class="paint-tool active" title="Pencil (B)">✎</button>
+          <button type="button" data-paint-tool="erase" class="paint-tool" title="Erase to transparent (E)">◩</button>
+          <button type="button" data-paint-tool="fill" class="paint-tool" title="Flood fill (G)">▧</button>
+          <button type="button" data-paint-tool="eyedropper" class="paint-tool" title="Eyedropper (I)">⌕</button>
+          <button type="button" data-paint-tool="line" class="paint-tool" title="Line (L)">／</button>
+          <button type="button" data-paint-tool="rectangle" class="paint-tool" title="Rectangle (U)">□</button>
+          <button type="button" id="paintUndoBtn" class="paint-tool" title="Undo (Ctrl+Z)">↶</button>
+          <button type="button" id="paintRedoBtn" class="paint-tool" title="Redo (Ctrl+Y)">↷</button>
+        </div>
+        <div class="paint-help">Select a palette color, then click or drag. B pencil · E erase · G fill · I eyedropper · L line · U rectangle.</div>
+        <div class="pixel-canvas-wrap"><canvas id="pixelCanvas" width="16" height="16" aria-label="Pixel texture canvas"></canvas></div>
+        <label class="zoom-control"><span>ZOOM</span><input id="canvasZoom" type="range" min="4" max="32" value="14"><output id="canvasZoomValue">14×</output></label>
+        <div class="palette-heading"><span>SHARED PALETTE</span><button id="addColorBtn" type="button">＋ Color</button></div>
+        <div id="pixelPalette" class="pixel-palette"></div>
+        <div id="paletteEditor" class="palette-editor" hidden>
+          <span id="paletteSymbol"></span><input id="paletteColor" type="color" aria-label="Palette color"><label>Alpha <input id="paletteAlpha" type="range" min="0" max="255" value="255"></label><output id="paletteAlphaValue">255</output>
+        </div>
+        <div id="textureMessage" class="texture-message">Choose a face and paint pixels.</div>
+      </section>
+      <div class="inspector-bottom"><span>SKYVOXEL FORMAT</span><span id="formatVersion">VERSION 1</span></div>
+    </aside>
+  </main>
+  <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}
+  </script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+id=mana_potion
+name=Mana Potion
+description=Restores 25 mana when consumed.
+category=consumable
+rarity=UNCOMMON
+max_stack=64
+icon=MP
+sell_price=7
+tag=potion
+use_effect=RESTORE_MANA|25

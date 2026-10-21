@@ -1,0 +1,9 @@
+id=moonstone_ore
+name=Moonstone Ore
+description=A silvery ore that catches stray starlight.
+category=material
+rarity=RARE
+max_stack=64
+icon=MO
+sell_price=18
+tag=material

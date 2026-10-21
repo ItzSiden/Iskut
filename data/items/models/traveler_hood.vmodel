@@ -1,0 +1,53 @@
+# Iskut self-contained textured item model v2.
+ISKUT_ITEM_MODEL 2
+NAME traveler_hood
+HEIGHT 0.62
+TEXTURE fabric 8 8
+PALETTE fabric 0 #202F47
+PALETTE fabric 1 #344E6B
+PALETTE fabric 2 #55799B
+PALETTE fabric 3 #91ADC4
+PIXEL fabric 0 01100110
+PIXEL fabric 1 12211221
+PIXEL fabric 2 23322332
+PIXEL fabric 3 12211221
+PIXEL fabric 4 01100110
+PIXEL fabric 5 12211221
+PIXEL fabric 6 23322332
+PIXEL fabric 7 12211221
+END_TEXTURE
+TEXTURE cloth_light 8 8
+PALETTE cloth_light 0 #56452F
+PALETTE cloth_light 1 #A18A62
+PALETTE cloth_light 2 #D5C39A
+PALETTE cloth_light 3 #F2E6C7
+PIXEL cloth_light 0 12221221
+PIXEL cloth_light 1 23332332
+PIXEL cloth_light 2 12221221
+PIXEL cloth_light 3 01211012
+PIXEL cloth_light 4 12221221
+PIXEL cloth_light 5 23332332
+PIXEL cloth_light 6 12221221
+PIXEL cloth_light 7 01211012
+END_TEXTURE
+TEXTURE iron 8 8
+PALETTE iron 0 #182633
+PALETTE iron 1 #344A5A
+PALETTE iron 2 #6D8798
+PALETTE iron 3 #B5C8D2
+PIXEL iron 0 01222110
+PIXEL iron 1 12333210
+PIXEL iron 2 23333210
+PIXEL iron 3 12333210
+PIXEL iron 4 01222110
+PIXEL iron 5 00122100
+PIXEL iron 6 00011000
+PIXEL iron 7 00000000
+END_TEXTURE
+PART hood_back fabric 0.000 0.045 -0.015 0.280 0.290 0.200 0.0
+PART hood_top fabric 0.000 0.160 0.020 0.300 0.120 0.220 0.0
+PART hood_face_left cloth_light -0.095 0.035 0.095 0.090 0.190 0.045 -8.0
+PART hood_face_right cloth_light 0.095 0.035 0.095 0.090 0.190 0.045 8.0
+PART face_shadow iron 0.000 0.015 0.116 0.105 0.140 0.018 0.0
+PART mantle fabric 0.000 -0.130 -0.015 0.350 0.130 0.220 0.0
+PART clasp gold 0.000 -0.090 0.120 0.045 0.045 0.025 0.0

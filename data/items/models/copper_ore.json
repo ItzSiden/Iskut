@@ -1,0 +1,329 @@
+{
+	"format_version": "26.3",
+	"credit": "Converted to Blockbench Minecraft Java Block/Item JSON from the original Iskut model; open/save with Blockbench.",
+	"texture_size": [
+		8,
+		8
+	],
+	"textures": {
+		"copper": "copper_ore/copper",
+		"bronze": "copper_ore/bronze",
+		"orange": "copper_ore/orange",
+		"brown": "copper_ore/brown"
+	},
+	"elements": [
+		{
+			"name": "ore_core",
+			"from": [
+				5.6,
+				6.08,
+				6.0
+			],
+			"to": [
+				10.4,
+				9.92,
+				10.0
+			],
+			"faces": {
+				"up": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#copper"
+				},
+				"down": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#copper"
+				},
+				"south": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#copper"
+				},
+				"north": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#copper"
+				},
+				"west": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#copper"
+				},
+				"east": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#copper"
+				}
+			},
+			"rotation": {
+				"angle": 14.0,
+				"axis": "y",
+				"origin": [
+					8.0,
+					8.0,
+					8.0
+				]
+			}
+		},
+		{
+			"name": "ore_peak",
+			"from": [
+				6.16,
+				8.96,
+				6.88
+			],
+			"to": [
+				8.72,
+				10.88,
+				9.28
+			],
+			"faces": {
+				"up": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#bronze"
+				},
+				"down": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#bronze"
+				},
+				"south": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#bronze"
+				},
+				"north": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#bronze"
+				},
+				"west": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#bronze"
+				},
+				"east": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#bronze"
+				}
+			},
+			"rotation": {
+				"angle": -10.0,
+				"axis": "y",
+				"origin": [
+					7.44,
+					9.92,
+					8.08
+				]
+			}
+		},
+		{
+			"name": "ore_glint",
+			"from": [
+				8.84,
+				7.92,
+				9.64
+			],
+			"to": [
+				10.36,
+				9.2,
+				10.2
+			],
+			"faces": {
+				"up": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#orange"
+				},
+				"down": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#orange"
+				},
+				"south": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#bronze",
+					"rotation": 90
+				},
+				"north": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#orange"
+				},
+				"west": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#orange"
+				},
+				"east": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#orange"
+				}
+			},
+			"rotation": {
+				"angle": 18.0,
+				"axis": "y",
+				"origin": [
+					9.6,
+					8.56,
+					9.92
+				]
+			}
+		},
+		{
+			"name": "ore_shadow",
+			"from": [
+				5.28,
+				6.16,
+				8.16
+			],
+			"to": [
+				7.36,
+				7.76,
+				9.76
+			],
+			"faces": {
+				"up": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#brown"
+				},
+				"down": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#brown"
+				},
+				"south": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#brown"
+				},
+				"north": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#brown"
+				},
+				"west": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#brown"
+				},
+				"east": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#brown"
+				}
+			},
+			"rotation": {
+				"angle": -22.0,
+				"axis": "y",
+				"origin": [
+					6.32,
+					6.96,
+					8.96
+				]
+			}
+		}
+	]
+}

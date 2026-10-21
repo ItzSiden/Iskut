@@ -1,0 +1,16 @@
+id=sky_wisp_pet
+name=Sky Wisp Companion
+description=A curious wisp that lends a little strength and magical insight.
+category=pet
+rarity=RARE
+max_stack=1
+icon=PW
+equipment_slot=PET
+sell_price=100
+modifier=defense|FLAT|2
+modifier=strength|FLAT|3
+modifier=intelligence|FLAT|5
+modifier=movement_speed|PERCENT|0.04
+modifier=damage_multiplier|PERCENT|0.02
+tag=starter
+tag=pet

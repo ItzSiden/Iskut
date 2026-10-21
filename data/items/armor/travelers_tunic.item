@@ -1,0 +1,13 @@
+id=traveler_tunic
+name=Traveler's Tunic
+description=Reliable padded armor issued to new explorers.
+category=armor
+rarity=COMMON
+max_stack=1
+icon=CH
+equipment_slot=CHESTPLATE
+sell_price=36
+modifier=max_health|FLAT|12
+modifier=defense|FLAT|8
+tag=starter
+tag=armor

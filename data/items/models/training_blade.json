@@ -1,0 +1,602 @@
+{
+	"format_version": "26.3",
+	"credit": "Converted to Blockbench Minecraft Java Block/Item JSON from the original Iskut model; open/save with Blockbench.",
+	"texture_size": [
+		8,
+		8
+	],
+	"textures": {
+		"gold": "training_blade/gold",
+		"leather": "training_blade/leather",
+		"copper": "training_blade/copper",
+		"steel": "training_blade/steel",
+		"iron": "training_blade/iron",
+		"silver": "training_blade/silver",
+		"cyan": "training_blade/cyan",
+		"blade_engraving": "training_blade/blade_engraving"
+	},
+	"elements": [
+		{
+			"name": "pommel",
+			"from": [
+				6.88,
+				5.52,
+				6.88
+			],
+			"to": [
+				9.12,
+				6.96,
+				9.12
+			],
+			"faces": {
+				"up": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#gold"
+				},
+				"down": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#gold"
+				},
+				"south": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#gold"
+				},
+				"north": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#gold"
+				},
+				"west": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#gold"
+				},
+				"east": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#gold"
+				}
+			}
+		},
+		{
+			"name": "grip",
+			"from": [
+				7.16,
+				6.4,
+				7.16
+			],
+			"to": [
+				8.84,
+				10.72,
+				8.84
+			],
+			"faces": {
+				"up": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#leather"
+				},
+				"down": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#leather"
+				},
+				"south": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#leather"
+				},
+				"north": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#leather"
+				},
+				"west": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#leather"
+				},
+				"east": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#leather"
+				}
+			},
+			"rotation": {
+				"angle": -8.0,
+				"axis": "y",
+				"origin": [
+					8.0,
+					8.56,
+					8.0
+				]
+			}
+		},
+		{
+			"name": "grip_wrap",
+			"from": [
+				7.072,
+				8.44,
+				8.68
+			],
+			"to": [
+				8.928,
+				9.0,
+				9.08
+			],
+			"faces": {
+				"up": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#copper"
+				},
+				"down": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#copper"
+				},
+				"south": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#copper"
+				},
+				"north": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#copper"
+				},
+				"west": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#copper"
+				},
+				"east": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#copper"
+				}
+			},
+			"rotation": {
+				"angle": -8.0,
+				"axis": "y",
+				"origin": [
+					8.0,
+					8.72,
+					8.88
+				]
+			}
+		},
+		{
+			"name": "guard",
+			"from": [
+				5.28,
+				10.76,
+				7.08
+			],
+			"to": [
+				10.72,
+				11.8,
+				8.92
+			],
+			"faces": {
+				"up": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#gold",
+					"rotation": 90
+				},
+				"down": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#steel"
+				},
+				"south": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#steel"
+				},
+				"north": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#steel"
+				},
+				"west": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#steel"
+				},
+				"east": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#steel"
+				}
+			},
+			"rotation": {
+				"angle": -5.0,
+				"axis": "y",
+				"origin": [
+					8.0,
+					11.28,
+					8.0
+				]
+			}
+		},
+		{
+			"name": "guard_gem",
+			"from": [
+				7.4,
+				11.04,
+				8.872
+			],
+			"to": [
+				8.6,
+				12.16,
+				9.272
+			],
+			"faces": {
+				"up": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#cyan"
+				},
+				"down": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#cyan"
+				},
+				"south": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#cyan"
+				},
+				"north": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#cyan"
+				},
+				"west": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#cyan"
+				},
+				"east": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#cyan"
+				}
+			}
+		},
+		{
+			"name": "blade",
+			"from": [
+				6.84,
+				11.52,
+				7.56
+			],
+			"to": [
+				9.16,
+				20.96,
+				8.44
+			],
+			"faces": {
+				"up": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#iron"
+				},
+				"down": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#iron"
+				},
+				"south": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#blade_engraving"
+				},
+				"north": {
+					"uv": [
+						8,
+						0,
+						0,
+						8
+					],
+					"texture": "#blade_engraving",
+					"rotation": 180
+				},
+				"west": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#iron"
+				},
+				"east": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#iron"
+				}
+			}
+		},
+		{
+			"name": "blade_edge",
+			"from": [
+				7.72,
+				12.08,
+				8.336
+			],
+			"to": [
+				8.28,
+				20.72,
+				8.624
+			],
+			"faces": {
+				"up": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#silver"
+				},
+				"down": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#silver"
+				},
+				"south": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#silver",
+					"rotation": 90
+				},
+				"north": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#silver"
+				},
+				"west": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#silver"
+				},
+				"east": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#silver"
+				}
+			}
+		},
+		{
+			"name": "blade_tip",
+			"from": [
+				7.28,
+				20.4,
+				7.56
+			],
+			"to": [
+				8.72,
+				22.32,
+				8.44
+			],
+			"faces": {
+				"up": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#silver"
+				},
+				"down": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#silver"
+				},
+				"south": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#silver"
+				},
+				"north": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#silver"
+				},
+				"west": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#silver"
+				},
+				"east": {
+					"uv": [
+						0,
+						0,
+						8,
+						8
+					],
+					"texture": "#silver"
+				}
+			}
+		}
+	]
+}

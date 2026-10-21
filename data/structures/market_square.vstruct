@@ -1,0 +1,90 @@
+SKYVOXEL_STRUCTURE 1
+NAME Market_Square
+# Door faces: A +z, B -x, C -z. All stalls face the central fountain.
+
+# =========================================================
+# STALL A — faces +z, center (0, -7.0), red_wool canopy
+# =========================================================
+CUBOID mkt_a_post_bn wood 2.0 1.75 -8.2 0.4 3.5 0.4 true
+CUBOID mkt_a_post_bw wood -2.0 1.75 -8.2 0.4 3.5 0.4 true
+CUBOID mkt_a_post_fn wood 2.0 1.20 -5.8 0.4 2.4 0.4 true
+CUBOID mkt_a_post_fw wood -2.0 1.20 -5.8 0.4 2.4 0.4 true
+CUBOID mkt_a_counter wood 0 0.65 -5.8 3.6 1.1 0.6 true
+CUBOID mkt_a_counter_top stone_light 0 1.22 -5.8 3.8 0.08 0.8 true
+CUBOID mkt_a_shelf wood 0 1.50 -8.0 3.6 0.15 0.5 true
+CUBOID mkt_a_back_panel wood 0 2.20 -8.3 4.0 2.4 0.15 true
+CUBOID mkt_a_canopy_1 red_wool 0 3.50 -8.35 4.6 0.12 1.4 true
+CUBOID mkt_a_canopy_2 red_wool 0 3.14 -7.45 4.6 0.12 1.4 true
+CUBOID mkt_a_canopy_3 red_wool 0 2.78 -6.55 4.6 0.12 1.4 true
+CUBOID mkt_a_canopy_4 red_wool 0 2.42 -5.65 4.6 0.12 1.4 true
+CUBOID mkt_a_canopy_trim_1 white_wool 0 3.56 -8.35 4.6 0.04 0.2 true
+CUBOID mkt_a_canopy_trim_4 white_wool 0 2.48 -5.65 4.6 0.04 0.2 true
+CUBOID mkt_a_sign_back slate 0 2.15 -5.50 2.5 0.5 0.15 true
+CUBOID mkt_a_sign gold 0 2.15 -5.40 2.3 0.4 0.08 true
+CUBOID mkt_a_goods_1 gold 0.8 1.42 -5.8 0.4 0.25 0.3 true
+CUBOID mkt_a_goods_2 gold -0.8 1.42 -5.8 0.4 0.25 0.3 true
+CUBOID mkt_a_barrel wood -1.5 0.35 -7.5 0.7 0.7 0.7 true
+
+# =========================================================
+# STALL B — faces -x, center (7.0, 0), yellow_wool canopy
+# =========================================================
+CUBOID mkt_b_post_bn wood 8.2 1.75 2.0 0.4 3.5 0.4 true
+CUBOID mkt_b_post_bs wood 8.2 1.75 -2.0 0.4 3.5 0.4 true
+CUBOID mkt_b_post_fn wood 5.8 1.20 2.0 0.4 2.4 0.4 true
+CUBOID mkt_b_post_fs wood 5.8 1.20 -2.0 0.4 2.4 0.4 true
+CUBOID mkt_b_counter wood 5.8 0.65 0 0.6 1.1 3.6 true
+CUBOID mkt_b_counter_top stone_light 5.8 1.22 0 0.8 0.08 3.8 true
+CUBOID mkt_b_shelf wood 8.0 1.50 0 0.5 0.15 3.6 true
+CUBOID mkt_b_back_panel wood 8.3 2.20 0 0.15 2.4 4.0 true
+CUBOID mkt_b_canopy_1 yellow_wool 8.35 3.50 0 1.4 0.12 4.6 true
+CUBOID mkt_b_canopy_2 yellow_wool 7.45 3.14 0 1.4 0.12 4.6 true
+CUBOID mkt_b_canopy_3 yellow_wool 6.55 2.78 0 1.4 0.12 4.6 true
+CUBOID mkt_b_canopy_4 yellow_wool 5.65 2.42 0 1.4 0.12 4.6 true
+CUBOID mkt_b_canopy_trim_1 white_wool 8.35 3.56 0 0.2 0.04 4.6 true
+CUBOID mkt_b_canopy_trim_4 white_wool 5.65 2.48 0 0.2 0.04 4.6 true
+CUBOID mkt_b_sign_back slate 5.50 2.15 0 0.15 0.5 2.5 true
+CUBOID mkt_b_sign gold 5.40 2.15 0 0.08 0.4 2.3 true
+CUBOID mkt_b_goods_1 gold 5.8 1.42 0.8 0.3 0.25 0.4 true
+CUBOID mkt_b_goods_2 gold 5.8 1.42 -0.8 0.3 0.25 0.4 true
+CUBOID mkt_b_barrel wood 7.5 0.35 -1.5 0.7 0.7 0.7 true
+
+# =========================================================
+# STALL C — faces -z, center (0, 7.0), cyan_wool canopy
+# =========================================================
+CUBOID mkt_c_post_bn wood 2.0 1.75 8.2 0.4 3.5 0.4 true
+CUBOID mkt_c_post_bw wood -2.0 1.75 8.2 0.4 3.5 0.4 true
+CUBOID mkt_c_post_fn wood 2.0 1.20 5.8 0.4 2.4 0.4 true
+CUBOID mkt_c_post_fw wood -2.0 1.20 5.8 0.4 2.4 0.4 true
+CUBOID mkt_c_counter wood 0 0.65 5.8 3.6 1.1 0.6 true
+CUBOID mkt_c_counter_top stone_light 0 1.22 5.8 3.8 0.08 0.8 true
+CUBOID mkt_c_shelf wood 0 1.50 8.0 3.6 0.15 0.5 true
+CUBOID mkt_c_back_panel wood 0 2.20 8.3 4.0 2.4 0.15 true
+CUBOID mkt_c_canopy_1 cyan_wool 0 3.50 8.35 4.6 0.12 1.4 true
+CUBOID mkt_c_canopy_2 cyan_wool 0 3.14 7.45 4.6 0.12 1.4 true
+CUBOID mkt_c_canopy_3 cyan_wool 0 2.78 6.55 4.6 0.12 1.4 true
+CUBOID mkt_c_canopy_4 cyan_wool 0 2.42 5.65 4.6 0.12 1.4 true
+CUBOID mkt_c_canopy_trim_1 white_wool 0 3.56 8.35 4.6 0.04 0.2 true
+CUBOID mkt_c_canopy_trim_4 white_wool 0 2.48 5.65 4.6 0.04 0.2 true
+CUBOID mkt_c_sign_back slate 0 2.15 5.50 2.5 0.5 0.15 true
+CUBOID mkt_c_sign gold 0 2.15 5.40 2.3 0.4 0.08 true
+CUBOID mkt_c_goods_1 gold 0.8 1.42 5.8 0.4 0.25 0.3 true
+CUBOID mkt_c_goods_2 gold -0.8 1.42 5.8 0.4 0.25 0.3 true
+CUBOID mkt_c_barrel wood 1.5 0.35 7.5 0.7 0.7 0.7 true
+
+# =========================================================
+# FOUNTAIN — center of plaza
+# =========================================================
+CUBOID fountain_base stone_dark 0 0.15 0 4.6 0.3 4.6 true
+CUBOID fountain_floor stone_light 0 0.45 0 4.8 0.3 4.8 true
+CUBOID fountain_wall_n stone_light 0 0.75 -2.2 4.8 0.6 0.4 true
+CUBOID fountain_wall_s stone_light 0 0.75 2.2 4.8 0.6 0.4 true
+CUBOID fountain_wall_e stone_light 2.2 0.75 0 0.4 0.6 4.0 true
+CUBOID fountain_wall_w stone_light -2.2 0.75 0 0.4 0.6 4.0 true
+CUBOID fountain_water water 0 0.65 0 4.0 0.1 4.0 false
+CUBOID fountain_column stone 0 1.50 0 1.0 1.6 1.0 true
+CUBOID fountain_column_cap stone_light 0 2.45 0 1.4 0.3 1.4 true
+CUBOID fountain_spout_n water 0 1.50 -0.6 0.15 1.7 0.15 true
+CUBOID fountain_spout_s water 0 1.50 0.6 0.15 1.7 0.15 true
+CUBOID fountain_pillar stone 0 3.05 0 0.5 1.0 0.5 true
+CUBOID fountain_top crystal 0 3.85 0 0.9 0.7 0.9 true
+CUBOID fountain_halo crystal 0 3.85 0 1.5 0.1 1.5 true

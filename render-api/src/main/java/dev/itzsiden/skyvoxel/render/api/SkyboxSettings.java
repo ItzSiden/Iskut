@@ -11,9 +11,9 @@ public record SkyboxSettings(
     float sunRadiusFraction, boolean sunEnabled
 ) {
     public static final SkyboxSettings DAYLIGHT = new SkyboxSettings(
-        0.105f, 0.235f, 0.49f,
-        0.43f, 0.68f, 0.88f,
-        0.67f, 0.80f, 0.90f,
+        0.14f, 0.26f, 0.48f,
+        0.52f, 0.65f, 0.82f,
+        0.69f, 0.78f, 0.86f,
         0.34f, 0.56f, -1.0f,
         0.020f, true
     );

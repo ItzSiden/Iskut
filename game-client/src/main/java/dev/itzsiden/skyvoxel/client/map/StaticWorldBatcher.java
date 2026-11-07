@@ -284,7 +284,7 @@ final class StaticWorldBatcher {
             // Cheap conservative XY/Z bound around the short sun ray before doing slab intersection.
             if (other.maxX() < ox - 0.15f || other.minX() > ox + SUN_X * SHADOW_REACH + 0.15f) continue;
             if (other.minZ() > oz + 0.15f || other.maxZ() < oz + SUN_Z * SHADOW_REACH - 0.15f) continue;
-            if (rayHitsBounds(ox, oy, oz, other)) return 0.77f;
+            if (rayHitsBounds(ox, oy, oz, other)) return 0.80f;
         }
         return 1.0f;
     }

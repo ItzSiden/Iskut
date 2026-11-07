@@ -1,0 +1,3 @@
+SKYVOXEL_STRUCTURE 1
+NAME Market_Crates
+MODEL market-crates ../blocks/models/market-crates.json 0 0 0 4.5 true

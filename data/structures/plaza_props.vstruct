@@ -1,0 +1,32 @@
+# plaza props only (spawn paving, avenue, portal apron)
+SKYVOXEL_STRUCTURE 1
+NAME Central_Plaza_Props
+CUBOID spawn_paving_0 stone_light 0 0.035 6.5 6 0.07 1 false
+CUBOID spawn_paving_1 stone_light 0 0.035 7.5 8 0.07 1 false
+CUBOID spawn_paving_2 stone_light -4.5 0.035 8.5 1 0.07 1 false
+CUBOID spawn_paving_3 stone_light 4.5 0.035 8.5 1 0.07 1 false
+CUBOID spawn_paving_4 stone_light -5 0.035 12 2 0.07 6 false
+CUBOID spawn_paving_5 stone_light 5 0.035 12 2 0.07 6 false
+CUBOID spawn_paving_6 stone_light -4.5 0.035 15.5 1 0.07 1 false
+CUBOID spawn_paving_7 stone_light 4.5 0.035 15.5 1 0.07 1 false
+CUBOID spawn_paving_8 stone_light 0 0.035 16.5 8 0.07 1 false
+CUBOID spawn_paving_9 stone_light 0 0.035 17.5 6 0.07 1 false
+CUBOID spawn_rim_0 slate 0 0.035 5.5 6 0.07 1 false
+CUBOID spawn_rim_1 slate -4.5 0.035 7 1 0.07 2 false
+CUBOID spawn_rim_2 slate 4.5 0.035 7 1 0.07 2 false
+CUBOID spawn_rim_3 slate -6.5 0.035 12 1 0.07 6 false
+CUBOID spawn_rim_4 slate 6.5 0.035 12 1 0.07 6 false
+CUBOID spawn_rim_5 slate -5.5 0.035 15.5 1 0.07 1 false
+CUBOID spawn_rim_6 slate 5.5 0.035 15.5 1 0.07 1 false
+CUBOID spawn_rim_7 slate -5 0.035 16.5 2 0.07 1 false
+CUBOID spawn_rim_8 slate 5 0.035 16.5 2 0.07 1 false
+CUBOID spawn_rim_9 slate -4 0.035 17.5 2 0.07 1 false
+CUBOID spawn_rim_10 slate 4 0.035 17.5 2 0.07 1 false
+CUBOID spawn_rim_11 slate 0 0.035 18.5 6 0.07 1 false
+CUBOID spawn_base stone_dark 0 0.03 12 8 0.06 8 false
+CUBOID spawn_ring stone_light 0 0.075 12 6.4 0.05 6.4 false
+CUBOID spawn_inner gold 0 0.11 12 4.4 0.04 4.4 false
+CUBOID spawn_core slate 0 0.14 12 2 0.04 2 false
+CUBOID avenue_h0_0 stone_light 0 0.035 -4 4 0.07 18 false
+CUBOID portal_apron_h0_0 slate -4 0.035 -11 4 0.07 4 false
+CUBOID portal_apron_h0_1 slate 4 0.035 -11 4 0.07 4 false

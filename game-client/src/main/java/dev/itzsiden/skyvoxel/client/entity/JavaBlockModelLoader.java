@@ -36,6 +36,14 @@ public final class JavaBlockModelLoader {
         List<Object> elements = array(root.get("elements"), "elements", modelPath);
         Map<String, Object> textureRefs = root.containsKey("textures")
             ? object(root.get("textures"), "textures", modelPath) : Map.of();
+        // Standard Minecraft Java model UVs live in a 0..16 coordinate space regardless
+        // of the PNG's resolution. Older Iskut-generated JSON assets used texture-pixel
+        // UVs (for example an 8x8 PNG with UVs 0..8); preserve those without weakening
+        // the behavior for actual Blockbench exports.
+        String credit = root.get("credit") instanceof String value ? value : "";
+        String uvUnits = root.get("iskut_uv_units") instanceof String value ? value.strip() : "";
+        boolean legacyTexturePixelUv = uvUnits.equalsIgnoreCase("texture_pixels")
+            || credit.startsWith("Converted to Blockbench Minecraft Java Block/Item JSON from the original Iskut model");
         int textureWidth = 16, textureHeight = 16;
         if (root.containsKey("texture_size")) {
             List<Object> size = array(root.get("texture_size"), "texture_size", modelPath);
@@ -142,23 +150,28 @@ public final class JavaBlockModelLoader {
                 int rotation = faceData.containsKey("rotation") ? Math.round(number(faceData.get("rotation"), "face.rotation", modelPath)) : 0;
                 if (rotation != 0 && rotation != 90 && rotation != 180 && rotation != 270)
                     throw bad(modelPath, "face '" + face + "' rotation must be 0, 90, 180, or 270 degrees");
-                float[] uvPixels;
-                if (faceData.containsKey("uv")) {
+                float[] uvCoordinates;
+                boolean hasExplicitUv = faceData.containsKey("uv");
+                if (hasExplicitUv) {
                     List<Object> uv = array(faceData.get("uv"), "face.uv", modelPath);
                     if (uv.size() != 4) throw bad(modelPath, "face '" + face + "' uv must contain [u1, v1, u2, v2]");
-                    uvPixels = new float[]{
+                    uvCoordinates = new float[]{
                         number(uv.get(0), "uv.u1", modelPath), number(uv.get(1), "uv.v1", modelPath),
                         number(uv.get(2), "uv.u2", modelPath), number(uv.get(3), "uv.v2", modelPath)
                     };
                 } else {
-                    // Java Block/Item's omitted-UV fallback is a direction-specific projection
-                    // of the element bounds, not the whole texture for every face.
-                    uvPixels = defaultFaceUv(face, x0, y0, z0, x1, y1, z1, textureWidth, textureHeight);
+                    // Java default UV projection is expressed in the same 0..16 UV space.
+                    // The geometry is converted from model units to world units separately.
+                    uvCoordinates = defaultFaceUv(face, x0, y0, z0, x1, y1, z1, textureWidth, textureHeight);
                 }
-                float u0 = uvPixels[0] / textureWidth;
-                float v0 = uvPixels[1] / textureHeight;
-                float u1 = uvPixels[2] / textureWidth;
-                float v1 = uvPixels[3] / textureHeight;
+                float divisorU = hasExplicitUv && legacyTexturePixelUv
+                    ? pixelTextures.get(textureId).width() : (hasExplicitUv ? 16.0f : textureWidth);
+                float divisorV = hasExplicitUv && legacyTexturePixelUv
+                    ? pixelTextures.get(textureId).height() : (hasExplicitUv ? 16.0f : textureHeight);
+                float u0 = uvCoordinates[0] / divisorU;
+                float v0 = uvCoordinates[1] / divisorV;
+                float u1 = uvCoordinates[2] / divisorU;
+                float v1 = uvCoordinates[3] / divisorV;
                 TexturedCuboidMeshFactory.FaceTexture mapping = new TexturedCuboidMeshFactory.FaceTexture(
                     textureId, rotation, false, false, u0, v0, u1, v1, true);
                 faceMap.put(factoryFace, mapping);
@@ -181,9 +194,10 @@ public final class JavaBlockModelLoader {
     }
 
     /**
-     * Java Block/Item UV projection when a face omits its explicit UV rectangle.
-     * Coordinates in the model are 0..16 units; texture-space coordinates scale
-     * to the project's declared texture_size (Blockbench Java export convention).
+     * Java Block/Item's standard omitted-UV projection in UV units (16 units span
+     * the complete texture regardless of the PNG resolution). The declared texture
+     * size converts this UV space to source-pixel coordinates for the legacy atlas
+     * builder, after which it is normalized back to the source texture region.
      */
     private static float[] defaultFaceUv(String face, float fromX, float fromY, float fromZ,
                                           float toX, float toY, float toZ,

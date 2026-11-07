@@ -1,3 +1,4 @@
+0. USE HORIZION LAUNCHER TYPE UI LAYOUT AND STYLE/FONT ETC AS GUI.
 1. Fix Hand
 2. Fix Entity Nametag
 3. Fix Sky

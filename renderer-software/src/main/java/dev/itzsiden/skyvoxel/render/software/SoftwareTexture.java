@@ -68,7 +68,12 @@ final class SoftwareTexture implements RenderTexture {
         int w = data.width(), h = data.height();
         int[] pixels = data.pixels();
         generated.add(new Mip(w, h, pixels));
-        while (w > 1 || h > 1) {
+        // A model atlas contains several independent texture islands. Global mip generation
+        // averages across atlas padding and transparent canvas, creating visible colour and
+        // alpha glitches at distance. Keep model atlases at LOD 0; ordinary world/UI textures
+        // continue to use their existing mip chain.
+        boolean isolatedModelAtlas = data.name().startsWith("model-atlas-no-mip");
+        while (!isolatedModelAtlas && (w > 1 || h > 1)) {
             int nw = Math.max(1, w >>> 1), nh = Math.max(1, h >>> 1);
             int[] down = downsample(pixels, w, h, nw, nh);
             generated.add(new Mip(nw, nh, down));

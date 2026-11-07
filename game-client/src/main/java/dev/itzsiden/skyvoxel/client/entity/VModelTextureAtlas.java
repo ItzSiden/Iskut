@@ -7,8 +7,9 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
 
-/** Packs model-local pixel textures (legacy .vmodel or imported Blockbench Java JSON) into a nearest-filtered atlas. */
+/** Packs per-face model textures into an isolated, nearest-sampled texture atlas. */
 final class VModelTextureAtlas {
+    // Edge extrusion protects exact boundary samples and the last texel of each region.
     private static final int PADDING = 2;
 
     record PixelTexture(String id, int width, int height, int[] argb) {
@@ -57,13 +58,19 @@ final class VModelTextureAtlas {
                     pixels[(ty + py) * width + tx + px] = sourcePixels[sy * source.width() + sx];
                 }
             }
+            // Use the source image's texel-edge rectangle, not first/last texel centres.
+            // With nearest filtering and an extruded gutter this preserves uniform texel
+            // density: UV 0..1 spans all W x H source pixels rather than W-1 x H-1.
             regions.put(source.id(), new Region(
-                (tx + 0.5f) / width, (ty + 0.5f) / height,
-                (tx + source.width() - 0.5f) / width, (ty + source.height() - 0.5f) / height,
+                (float) tx / width, (float) ty / height,
+                (float) (tx + source.width()) / width, (float) (ty + source.height()) / height,
                 tx, ty, source.width(), source.height()));
             index++;
         }
-        return new Built(new TextureData("vmodel-atlas", width, height, pixels), Collections.unmodifiableMap(regions));
+        // Atlas mipmaps blend unrelated cells (and the transparent unused canvas) together.
+        // The OpenGL backend already uses nearest filtering without mipmaps; signal the same
+        // policy to the software renderer so distant models cannot develop colour/alpha seams.
+        return new Built(new TextureData("model-atlas-no-mip", width, height, pixels), Collections.unmodifiableMap(regions));
     }
 
     private static int nextPowerOfTwo(int value) {

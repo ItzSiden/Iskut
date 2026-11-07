@@ -21,7 +21,7 @@ import java.util.WeakHashMap;
 /** Generates transparent isometric inventory thumbnails directly from authored cuboid .vmodel parts. */
 public final class ItemIconGenerator {
     public static final int ICON_SIZE = 64;
-    public static final int GENERATOR_VERSION = 4;
+    public static final int GENERATOR_VERSION = 5;
     private static final Map<TextureData, BufferedImage> ATLAS_IMAGES = new WeakHashMap<>();
 
     private static final float CAMERA_X = 0.55f;
@@ -158,48 +158,65 @@ public final class ItemIconGenerator {
         }
     }
 
+    /**
+     * Reads the actual quad stream from the model mesh instead of assuming exactly six quads.
+     * Java model UVs can split a cube face into multiple tile-safe quads when the UV rectangle
+     * spans beyond 0..16. Inventory thumbnails must render those same quads and UVs as the game.
+     */
     private static void appendPart(EntityModel.Part p, List<Face> faces, List<Point3> all) {
         float hx = p.width() * 0.5f, hy = p.height() * 0.5f, hz = p.depth() * 0.5f;
-        Point3[][] localFaces = {
-            {pt(-hx, hy, -hz), pt(-hx, hy, hz), pt(hx, hy, hz), pt(hx, hy, -hz)}, // top
-            {pt(-hx, -hy, hz), pt(hx, -hy, hz), pt(hx, hy, hz), pt(-hx, hy, hz)}, // front
-            {pt(hx, -hy, -hz), pt(hx, hy, -hz), pt(hx, hy, hz), pt(hx, -hy, hz)}, // right
-            {pt(hx, -hy, -hz), pt(-hx, -hy, -hz), pt(-hx, hy, -hz), pt(hx, hy, -hz)}, // back
-            {pt(-hx, -hy, -hz), pt(-hx, -hy, hz), pt(-hx, hy, hz), pt(-hx, hy, -hz)}, // left
-            {pt(-hx, -hy, -hz), pt(hx, -hy, -hz), pt(hx, -hy, hz), pt(-hx, -hy, hz)} // bottom
-        };
-        Point3[] normals = {pt(0,1,0), pt(0,0,1), pt(1,0,0), pt(0,0,-1), pt(-1,0,0), pt(0,-1,0)};
-        float[] shades = {1.00f, 0.82f, 0.68f, 0.58f, 0.74f, 0.44f};
-        float[] meshVertices = p.mesh().data().vertices();
-        for (int f = 0; f < localFaces.length; f++) {
-            Point3 rotatedNormal = rotate(normals[f], p.rotationX(), p.rotationY(), p.rotationZ());
+        float[] vertices = p.mesh().data().vertices();
+        int vertexCount = p.mesh().data().vertexCount();
+        for (int base = 0; base + 3 < vertexCount; base += 4) {
+            Point3[] local = new Point3[4];
+            Point3[] world = new Point3[4];
+            float[] uvs = new float[8];
+            float dx = 0.0f, dy = 0.0f, dz = 0.0f;
+            for (int i = 0; i < 4; i++) {
+                int offset = (base + i) * MeshData.FLOATS_PER_VERTEX;
+                local[i] = pt(vertices[offset] * hx, vertices[offset + 1] * hy, vertices[offset + 2] * hz);
+                Point3 r = rotate(local[i], p.rotationX(), p.rotationY(), p.rotationZ());
+                world[i] = pt(r.x + p.offsetX(), r.y + p.offsetY(), r.z + p.offsetZ());
+                all.add(world[i]);
+                dx += world[i].x; dy += world[i].y; dz += world[i].z;
+                uvs[i * 2] = vertices[offset + MeshData.OFFSET_UV];
+                uvs[i * 2 + 1] = vertices[offset + MeshData.OFFSET_UV + 1];
+            }
+
+            Point3 e1 = pt(local[1].x - local[0].x, local[1].y - local[0].y, local[1].z - local[0].z);
+            Point3 e2 = pt(local[3].x - local[0].x, local[3].y - local[0].y, local[3].z - local[0].z);
+            Point3 normal = normalize(cross(e1, e2));
+            Point3 rotatedNormal = rotate(normal, p.rotationX(), p.rotationY(), p.rotationZ());
             float facing = dot(rotatedNormal, CAMERA_X / CAMERA_LENGTH, CAMERA_Y / CAMERA_LENGTH, CAMERA_Z / CAMERA_LENGTH);
             if (facing <= 0.015f) continue;
-            List<Point3> pts = new ArrayList<>(4);
-            float dx = 0, dy = 0, dz = 0;
-            for (Point3 v : localFaces[f]) {
-                Point3 r = rotate(v, p.rotationX(), p.rotationY(), p.rotationZ());
-                Point3 world = pt(r.x + p.offsetX(), r.y + p.offsetY(), r.z + p.offsetZ());
-                pts.add(world); all.add(world);
-                dx += world.x; dy += world.y; dz += world.z;
-            }
+
             float depth = (dx * CAMERA_X + dy * CAMERA_Y + dz * CAMERA_Z) / (4.0f * CAMERA_LENGTH);
-            float[] uvs = new float[8];
-            int vertexBase = f * 4;
-            for (int vertex = 0; vertex < 4; vertex++) {
-                int offset = (vertexBase + vertex) * MeshData.FLOATS_PER_VERTEX;
-                if (offset + MeshData.OFFSET_UV + 1 < meshVertices.length) {
-                    uvs[vertex * 2] = meshVertices[offset + MeshData.OFFSET_UV];
-                    uvs[vertex * 2 + 1] = meshVertices[offset + MeshData.OFFSET_UV + 1];
-                }
-            }
-            faces.add(new Face(List.copyOf(pts), p.material(), shades[f], depth, uvs));
+            faces.add(new Face(List.of(world), p.material(), shadeForNormal(normal), depth, uvs));
         }
-        // Keep every corner in the framing bounds, including corners on culled faces.
+        // Include all eight part corners in framing bounds even if their faces are camera-culled.
         for (float x : new float[]{-hx, hx}) for (float y : new float[]{-hy, hy}) for (float z : new float[]{-hz, hz}) {
             Point3 r = rotate(pt(x, y, z), p.rotationX(), p.rotationY(), p.rotationZ());
             all.add(pt(r.x + p.offsetX(), r.y + p.offsetY(), r.z + p.offsetZ()));
         }
+    }
+
+    private static float shadeForNormal(Point3 n) {
+        if (n.y > 0.5f) return 1.00f;
+        if (n.y < -0.5f) return 0.44f;
+        if (n.z > 0.5f) return 0.82f;
+        if (n.z < -0.5f) return 0.58f;
+        if (n.x > 0.5f) return 0.68f;
+        if (n.x < -0.5f) return 0.74f;
+        return 0.72f;
+    }
+
+    private static Point3 cross(Point3 a, Point3 b) {
+        return pt(a.y * b.z - a.z * b.y, a.z * b.x - a.x * b.z, a.x * b.y - a.y * b.x);
+    }
+
+    private static Point3 normalize(Point3 p) {
+        float length = length(p.x, p.y, p.z);
+        return length < 1.0e-8f ? pt(0, 1, 0) : pt(p.x / length, p.y / length, p.z / length);
     }
 
     private static Point3 rotate(Point3 p, float rx, float ry, float rz) {

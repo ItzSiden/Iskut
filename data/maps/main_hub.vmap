@@ -1,39 +1,38 @@
-# Iskut handcrafted ocean-world hub, version 1.
-# World surface levels are translated upward by +1.18 to place sea level at Y=1.0; terrain/shore spacing is preserved.
+# Iskut handcrafted ocean-world hub, version 3 (Blox-Fruits style square island).
+# World surface levels are translated upward by +1.18 to place sea level at Y=1.0.
+# Island plateau top is local y=2.0 -> world y=3.18. Structures are authored with ground at y=0, so they are placed at y=3.18.
+# The dock is authored with deck top at y=0 and is placed at y=1.18 (sand ledge level).
+# To move a building just change its PLACE x/z (door facing: hall/bank/auction = +Z south, blacksmith = -Z north).
 SKYVOXEL_MAP 1
 MAP Iskut_Ocean_Hub
-SPAWN 0 1.18 12 0
+SPAWN 0 4.18 0 0
 
 # Dedicated ocean plane renders first, is non-collidable, and is excluded from world AO/coplanar batching.
 PLACE ocean_surface ../structures/ocean_surface.vstruct 0 1.00 0 0
 
-# Latest authored island + layered shoreline. Beach transition is walkable, dry/wet sand are real step-down collision surfaces, and shallows/foam are visual-only.
-PLACE island ../structures/island_terrain.vstruct 0 1.18 0 0
-PLACE plaza_props ../structures/plaza_props.vstruct 0 1.18 0 0
-#PLACE beach_transition ../structures/beach_transition.vstruct 0 1.18 0 0   # replaced by island_terrain
+# Island (plateau, cliff, boundary wall, wet/dry sand ledge, stairs).
+PLACE hub_island ../structures/hub_island.vstruct 0 1.18 0 0
 
-# Core hub structures.
-PLACE portal ../structures/portal_gate.vstruct 0 1.18 0 0
-#PLACE shops ../structures/merchant_stalls.vstruct 0 1.18 0 0
-#PLACE gardens ../structures/gardens.vstruct 0 1.18 0 0
-#PLACE lamps ../structures/lamps.vstruct 0 1.18 0 0
-#PLACE pickups ../structures/crystal_shrines.vstruct 0 1.18 0 0
-#PLACE fountain ../structures/fountain.vstruct 0 1.18 0 0
+# Layout: roads + door stubs.
+PLACE hub_layout ../structures/hub_layout.vstruct 0 3.18 0 0
 
-# Trails and village.
-#PLACE path_lamps ../structures/path_lamps.vstruct 0 1.18 0 0
-#PLACE market ../structures/market_square.vstruct 22.12 1.18 2.2 0
+# Structures (each in its own file).
+PLACE spawn_pedestal ../structures/spawn_pedestal.vstruct 0 3.18 0 0
+PLACE community_hall ../structures/community_hall.vstruct 0 3.18 -29 0
+PLACE bank ../structures/bank.vstruct -28 3.18 -12 0
+PLACE auction_house ../structures/auction_house.vstruct 28 3.18 -12.5 0
+PLACE blacksmith ../structures/blacksmith.vstruct -31 3.18 13 0
+PLACE bazaar ../structures/bazaar.vstruct 27 3.18 16 0
+PLACE dock ../structures/dock.vstruct 0 1.18 44.5 0
 
-# Districts.
-#PLACE bank ../structures/bank.vstruct -13.5 1.18 21.5 0
-#PLACE auction ../structures/auction_house.vstruct 13.5 1.18 24 0
-#PLACE blacksmith ../structures/blacksmith.vstruct -24 1.18 33.5 0
-PLACE bazaar ../structures/bazaar_alley.vstruct 18 3 0 0
-PLACE crates ../structures/bazzar_crates.vstruct 22 3.5 4.5 0
-#PLACE harbor_east ../structures/harbor_east.vstruct 0 1.18 0 0
-#PLACE harbor_sw ../structures/harbor_sw.vstruct 0 1.18 0 0
+# Decoration.
+PLACE hub_props ../structures/hub_props.vstruct 0 3.18 0 0
+PLACE hub_palms ../structures/hub_palms.vstruct 0 3.18 0 0
 
-# Mainland-like elevation and forest.
-#PLACE wizard_tower ../structures/wizard_tower.vstruct -27 5.18 -12 0
-#PLACE summit ../structures/mountain_summit.vstruct 38.5 5.18 40.5 0
-#PLACE forest ../structures/forest.vstruct 0 1.18 0 0
+# Old organic island / plaza / portal / old bazaar - replaced.
+#PLACE island ../structures/island_terrain.vstruct 0 1.18 0 0
+#PLACE plaza_props ../structures/plaza_props.vstruct 0 1.18 0 0
+#PLACE beach_transition ../structures/beach_transition.vstruct 0 1.18 0 0
+#PLACE portal ../structures/portal_gate.vstruct 0 1.18 0 0
+#PLACE bazaar_old ../structures/bazaar_alley.vstruct 18 3 0 0
+#PLACE crates ../structures/bazzar_crates.vstruct 22 3.5 4.5 0

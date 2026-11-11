@@ -784,7 +784,7 @@ public final class ClientMain {
                         boolean hover = cursor.x() >= bx && cursor.x() <= bx + 340 * sc && cursor.y() >= by && cursor.y() <= by + bh;
                         combinedUi.roundedRect(bx, by, 340 * sc, bh, hover ? 0xFF2B6572 : 0xFF203C4B, 8 * sc);
                         combinedUi.strokeRoundedRect(bx, by, 340 * sc, bh, 0xFF8DEBFF, 1.2f * sc, 8 * sc);
-                        String buttonText = !shipSummoned ? "SUMMON SHIP" : (!sailing ? "BOARD & SAIL" : "RETURN TO DOCK");
+                        String buttonText = !shipSummoned ? "SUMMON SHIP" : (!sailing ? "BOARD & SAIL" : "STOP SAILING");
                         combinedUi.text(uiWidth * 0.5f, by + 33 * sc, buttonText, 15 * sc, 0xFFFFFFFF, true, false, UiDrawList.TextAlign.CENTER);
                         combinedUi.text(uiWidth * 0.5f, py + ph - 28 * sc, "W/S throttle  •  A/D steer  •  ESC close", 11 * sc, 0xFFB4C0CB, false, false, UiDrawList.TextAlign.CENTER);
                     }

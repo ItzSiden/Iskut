@@ -159,9 +159,6 @@ public final class ClientMain {
                     .map(EntityRaycast::hitbox).toList());
                 entityWorld.add(new Entity("npc-guide-elyra", EntityType.NPC, guideModel, "Elyra", "GUIDE • ISKUT")
                     .setPosition(-5.5f, 1.18f, -3.5f).setYaw(0.0f).setHealth(20, 20).setShowHealthBar(false));
-                Entity dockCaptain = new Entity("npc-dock-captain", EntityType.NPC, guideModel, "Captain Rowan", "HARBOR MASTER")
-                    .setPosition(0.0f, 1.18f, 56.5f).setYaw((float) Math.PI).setHealth(20, 20).setShowHealthBar(false);
-                entityWorld.add(dockCaptain);
                 Entity skyWisp = new Entity("mob-sky-wisp-01", EntityType.MOB, wispModel, "Sky Wisp", "LV. 3 • HOSTILE")
                     .setPosition(-3.5f, 1.38f, 4.0f).setHealth(20, 20).setDefense(4.0f);
                 entityWorld.add(skyWisp);
@@ -205,8 +202,7 @@ public final class ClientMain {
                         java.util.List.of("gale_saber", "skyguard_helmet", "skyguard_chestplate", "comet_fox")));
                 EntityInteractionRegistry entityInteractions = new EntityInteractionRegistry()
                     .register("npc-guide-elyra", "Talk", npc -> npc.displayName()
-                        + ": Welcome to Iskut Harbor! Explore the island and watch for hostile creatures beyond the safe paths.")
-                    .register("npc-dock-captain", "Open Ship Menu", npc -> "SHIP_MENU");
+                        + ": Welcome to Iskut Harbor! Explore the island and watch for hostile creatures beyond the safe paths.");
                 HostileMobSystem hostileMobs = new HostileMobSystem();
                 hostileMobs.register(skyWisp, 7.5f, 1.25f, 2.15f, 9.0f, 1.35f, 0.34f, 9.0f);
                 EntityRenderSystem entityRenderSystem = new EntityRenderSystem();
@@ -318,9 +314,6 @@ public final class ClientMain {
                 long skyShards = inventory.countItem("sky_shard");
                 String interactionMessage = "";
                 long interactionMessageUntil = 0L;
-                boolean shipMenuOpen = false, shipSummoned = false, sailing = false;
-                float shipX = 0.0f, shipZ = 63.0f, shipYaw = 0.0f, shipSpeed = 0.0f;
-                RenderObject shipHull = null, shipDeck = null, shipSail = null;
                 long respawnAtNanos = 0L;
                 boolean oceanDeathPending = false;
                 double displayedFps = 0.0;
@@ -377,8 +370,7 @@ public final class ClientMain {
                     }
                     previousInventoryDown = inventoryDown;
                     if (screen == GameScreen.PLAYING && escapePressed) {
-                        if (shipMenuOpen) { shipMenuOpen = false; window.setMouseCaptured(true); }
-                        else if (inventoryUi.visible()) {
+                        if (inventoryUi.visible()) {
                             if (inventoryUi.closeWithCursorRecovery(inventory, itemCatalog)) {
                                 inventoryUi.setVisible(false);
                                 window.setMouseCaptured(true);
@@ -481,20 +473,9 @@ public final class ClientMain {
                     float deltaSeconds = (now - previousTime) / 1_000_000_000.0f;
                     previousTime = now;
                     heldSwingTimer = Math.max(0.0f, heldSwingTimer - Math.max(0.0f, deltaSeconds));
-                    if (sailing) {
-                        boolean fwd = window.isKeyDown(Key.W), back = window.isKeyDown(Key.S);
-                        boolean turnL = window.isKeyDown(Key.A), turnR = window.isKeyDown(Key.D);
-                        shipSpeed = Math.max(-2.5f, Math.min(10.0f, shipSpeed + ((fwd ? 7.0f : 0.0f) - (back ? 5.0f : 0.0f)) * deltaSeconds));
-                        shipSpeed *= (float)Math.pow(0.985, deltaSeconds * 60.0);
-                        shipYaw += ((turnL ? 1.0f : 0.0f) - (turnR ? 1.0f : 0.0f)) * deltaSeconds * (0.7f + Math.abs(shipSpeed) * 0.04f);
-                        shipX += (float)Math.sin(shipYaw) * shipSpeed * deltaSeconds;
-                        shipZ -= (float)Math.cos(shipYaw) * shipSpeed * deltaSeconds;
-                        float bob = (float)Math.sin(now * 0.0000014) * 0.055f;
-                        shipHull.transform().setPosition(shipX, 0.72f + bob, shipZ).setRotation(0, shipYaw, 0);
-                        shipDeck.transform().setPosition(shipX, 1.12f + bob, shipZ).setRotation(0, shipYaw, 0);
-                        shipSail.transform().setPosition(shipX, 2.8f + bob, shipZ).setRotation(0, shipYaw, 0);
-                        player.setInputEnabled(false); player.setVehiclePosition(shipX, 1.2, shipZ, shipYaw);
-                    } else { player.setInputEnabled(playerStats.alive() && !inventoryOpen && respawnAtNanos == 0L && !shipMenuOpen); player.setMovementMultiplier(playerStats.movementSpeedMultiplier()); player.update(window, deltaSeconds); }
+                    player.setInputEnabled(playerStats.alive() && !inventoryOpen && respawnAtNanos == 0L);
+                    player.setMovementMultiplier(playerStats.movementSpeedMultiplier());
+                    player.update(window, deltaSeconds);
                     // There is no invisible global floor: if the player falls through the ocean,
                     // the sea becomes a real world hazard and uses the normal death/respawn flow.
                     if (player.belowOceanRespawnPlane() && playerStats.alive()) {
@@ -533,26 +514,7 @@ public final class ClientMain {
                     previousLeftDown = leftDown;
                     previousRightDown = rightDown;
                     boolean uiMouseHandled = inventoryUi.handleMouse(window.uiWidth(), window.uiHeight(), cursor.x(), cursor.y(),
-                        leftClicked && !shipMenuOpen, rightClicked && !shipMenuOpen, window.isKeyDown(Key.LEFT_SHIFT), inventory, itemCatalog);
-                    if (shipMenuOpen && leftClicked) {
-                        float sc = Math.max(0.75f, Math.min(1.0f, Math.min(window.uiWidth() / 1280.0f, window.uiHeight() / 720.0f)));
-                        float bx = (window.uiWidth() - 340 * sc) * 0.5f, by = window.uiHeight() * 0.5f + 10 * sc;
-                        if (cursor.x() >= bx && cursor.x() <= bx + 340 * sc && cursor.y() >= by && cursor.y() <= by + 54 * sc) {
-                            if (!shipSummoned) {
-                                Material hullMat = new Material("ship-hull", 0.38f, 0.20f, 0.10f);
-                                Material deckMat = new Material("ship-deck", 0.62f, 0.42f, 0.22f);
-                                Material sailMat = new Material("ship-sail", 0.82f, 0.78f, 0.58f);
-                                shipHull = new RenderObject("summoned-ship-hull", entityCube, hullMat, new Transform().setPosition(shipX, 0.72f, shipZ).setScale(4.0f, 0.65f, 1.8f));
-                                shipDeck = new RenderObject("summoned-ship-deck", entityCube, deckMat, new Transform().setPosition(shipX, 1.12f, shipZ).setScale(3.2f, 0.18f, 1.45f));
-                                shipSail = new RenderObject("summoned-ship-sail", entityCube, sailMat, new Transform().setPosition(shipX, 2.8f, shipZ).setScale(0.12f, 3.0f, 2.0f));
-                                scene.add(shipHull); scene.add(shipDeck); scene.add(shipSail);
-                                if (renderScene != scene) { renderScene.add(shipHull); renderScene.add(shipDeck); renderScene.add(shipSail); }
-                                shipSummoned = true;
-                            } else { sailing = !sailing; }
-                        } else if (cursor.x() >= (window.uiWidth() - 220 * sc) * 0.5f && cursor.x() <= (window.uiWidth() + 220 * sc) * 0.5f && cursor.y() > window.uiHeight() * 0.5f + 80 * sc) {
-                            shipMenuOpen = false; window.setMouseCaptured(true);
-                        }
-                    }
+                        leftClicked, rightClicked, window.isKeyDown(Key.LEFT_SHIFT), inventory, itemCatalog);
                     if (uiMouseHandled) inventory.syncStats(playerStats, itemCatalog);
                     if (!inventoryOpen && !uiMouseHandled && leftClicked) heldSwingTimer = heldSwingDuration;
                     double cosPitch = Math.cos(player.pitch());
@@ -616,7 +578,6 @@ public final class ClientMain {
                     if (!inventoryOpen && interactPressed && entityHit.isPresent() && entityHit.get().entity().type() == EntityType.NPC) {
                         Entity npc = entityHit.get().entity();
                         interactionMessage = entityInteractions.interact(npc).orElse("This NPC has no interaction configured yet.");
-                        if ("SHIP_MENU".equals(interactionMessage)) { shipMenuOpen = true; interactionMessage = ""; window.setMouseCaptured(false); }
                         interactionMessageUntil = System.nanoTime() + 6_000_000_000L;
                         profilePanel.setVisible(false);
                     } else if (!inventoryOpen && interactPressed && loadedMap != null && targeting.target() != null && entityHit.isEmpty()) {
@@ -773,21 +734,6 @@ public final class ClientMain {
                         .addAll(hud.build(uiWidth, uiHeight))
                         .addAll(entityHolograms)
                         .addAll(inventoryUi.build(uiWidth, uiHeight, inventory, itemCatalog, playerStats));
-                    if (shipMenuOpen) {
-                        float sc = Math.max(0.75f, Math.min(1.0f, Math.min(uiWidth / 1280.0f, uiHeight / 720.0f)));
-                        float pw = 460 * sc, ph = 290 * sc, px = (uiWidth - pw) * 0.5f, py = (uiHeight - ph) * 0.5f;
-                        combinedUi.roundedRect(px, py, pw, ph, 0xF0182430, 12 * sc);
-                        combinedUi.strokeRoundedRect(px, py, pw, ph, 0xFF55C9D5, 1.5f * sc, 12 * sc);
-                        combinedUi.text(uiWidth * 0.5f, py + 42 * sc, "SHIP MENU", 24 * sc, 0xFF8DEBFF, true, false, UiDrawList.TextAlign.CENTER);
-                        combinedUi.text(uiWidth * 0.5f, py + 78 * sc, "Captain Rowan  •  Ocean exploration", 12 * sc, 0xFFB4C0CB, false, false, UiDrawList.TextAlign.CENTER);
-                        float bx = (uiWidth - 340 * sc) * 0.5f, by = py + 112 * sc, bh = 54 * sc;
-                        boolean hover = cursor.x() >= bx && cursor.x() <= bx + 340 * sc && cursor.y() >= by && cursor.y() <= by + bh;
-                        combinedUi.roundedRect(bx, by, 340 * sc, bh, hover ? 0xFF2B6572 : 0xFF203C4B, 8 * sc);
-                        combinedUi.strokeRoundedRect(bx, by, 340 * sc, bh, 0xFF8DEBFF, 1.2f * sc, 8 * sc);
-                        String buttonText = !shipSummoned ? "SUMMON SHIP" : (!sailing ? "BOARD & SAIL" : "STOP SAILING");
-                        combinedUi.text(uiWidth * 0.5f, by + 33 * sc, buttonText, 15 * sc, 0xFFFFFFFF, true, false, UiDrawList.TextAlign.CENTER);
-                        combinedUi.text(uiWidth * 0.5f, py + ph - 28 * sc, "W/S throttle  •  A/D steer  •  ESC close", 11 * sc, 0xFFB4C0CB, false, false, UiDrawList.TextAlign.CENTER);
-                    }
                     renderer.drawUi(combinedUi.build());
                     if (screenshotPressed) {
                         try {

@@ -89,21 +89,29 @@ CUBOID auction_lectern_0 wood_light 0.000 1.340 -4.500 1.600 1.000 0.800 true
 CUBOID auction_gavel_block_0 gold 0.000 1.990 -4.500 0.600 0.300 0.400 true
 CUBOID auction_inner_banner_0 gold -5.500 4.140 -5.440 1.600 3.200 0.120 true
 CUBOID auction_inner_banner_1 gold 5.500 4.140 -5.440 1.600 3.200 0.120 true
-CUBOID bench_seat_0 wood_light -5.200 0.940 -0.500 5.000 0.200 0.800 true
-CUBOID bench_leg_0 wood -7.350 0.590 -0.500 0.300 0.500 0.600 true
-CUBOID bench_leg_1 wood -3.050 0.590 -0.500 0.300 0.500 0.600 true
-CUBOID bench_seat_1 wood_light 5.200 0.940 -0.500 5.000 0.200 0.800 true
-CUBOID bench_leg_2 wood 3.050 0.590 -0.500 0.300 0.500 0.600 true
-CUBOID bench_leg_3 wood 7.350 0.590 -0.500 0.300 0.500 0.600 true
-CUBOID bench_seat_2 wood_light -5.200 0.940 2.000 5.000 0.200 0.800 true
-CUBOID bench_leg_4 wood -7.350 0.590 2.000 0.300 0.500 0.600 true
-CUBOID bench_leg_5 wood -3.050 0.590 2.000 0.300 0.500 0.600 true
-CUBOID bench_seat_3 wood_light 5.200 0.940 2.000 5.000 0.200 0.800 true
-CUBOID bench_leg_6 wood 3.050 0.590 2.000 0.300 0.500 0.600 true
-CUBOID bench_leg_7 wood 7.350 0.590 2.000 0.300 0.500 0.600 true
-CUBOID bench_seat_4 wood_light -5.200 0.940 4.300 5.000 0.200 0.800 true
-CUBOID bench_leg_8 wood -7.350 0.590 4.300 0.300 0.500 0.600 true
-CUBOID bench_leg_9 wood -3.050 0.590 4.300 0.300 0.500 0.600 true
-CUBOID bench_seat_5 wood_light 5.200 0.940 4.300 5.000 0.200 0.800 true
-CUBOID bench_leg_10 wood 3.050 0.590 4.300 0.300 0.500 0.600 true
-CUBOID bench_leg_11 wood 7.350 0.590 4.300 0.300 0.500 0.600 true
+MODEL bench_0 ../blocks/models/bench.json -5.200 1.340 -0.500 4.330 2.000 1.900 true 0 0 0
+MODEL bench_1 ../blocks/models/bench.json 5.200 1.340 -0.500 4.330 2.000 1.900 true 0 0 0
+MODEL bench_2 ../blocks/models/bench.json -5.200 1.340 2.000 4.330 2.000 1.900 true 0 0 0
+MODEL bench_3 ../blocks/models/bench.json 5.200 1.340 2.000 4.330 2.000 1.900 true 0 0 0
+MODEL bench_4 ../blocks/models/bench.json -5.200 1.340 4.300 4.330 2.000 1.900 true 0 0 0
+MODEL bench_5 ../blocks/models/bench.json 5.200 1.340 4.300 4.330 2.000 1.900 true 0 0 0
+
+# Column feet and collar bands add a little craftsmanship to the timber frame
+CUBOID auction_column_base_0 stone_dark -8.500 0.400 -6.000 1.800 0.300 1.800 false
+CUBOID auction_column_base_1 stone_dark 8.500 0.400 -6.000 1.800 0.300 1.800 false
+CUBOID auction_column_base_2 stone_dark -8.500 0.400 6.000 1.800 0.300 1.800 false
+CUBOID auction_column_base_3 stone_dark 8.500 0.400 6.000 1.800 0.300 1.800 false
+CUBOID auction_column_band_0 gold -8.500 6.150 -6.000 1.650 0.250 1.650 false
+CUBOID auction_column_band_1 gold 8.500 6.150 -6.000 1.650 0.250 1.650 false
+CUBOID auction_column_band_2 gold -8.500 6.150 6.000 1.650 0.250 1.650 false
+CUBOID auction_column_band_3 gold 8.500 6.150 6.000 1.650 0.250 1.650 false
+# Entrance lanterns and a sign panel above the striped awning
+CUBOID auction_sconce_mount_0 gold -3.650 4.100 6.720 0.500 0.800 0.180 false
+CUBOID auction_sconce_glow_0 cyan -3.650 4.100 6.845 0.220 0.500 0.080 false
+CUBOID auction_sconce_mount_1 gold 3.650 4.100 6.720 0.500 0.800 0.180 false
+CUBOID auction_sconce_glow_1 cyan 3.650 4.100 6.845 0.220 0.500 0.080 false
+CUBOID auction_sign_panel slate 0.000 6.100 7.050 4.600 0.900 0.180 false
+CUBOID auction_sign_trim gold 0.000 6.100 7.170 4.900 0.140 0.100 false
+# Small crest at the top of the stepped roof
+CUBOID auction_roof_jewel_base gold 0.000 12.950 0.000 2.000 0.300 2.000 false
+CUBOID auction_roof_crystal_0 crystal 0.000 13.500 0.000 1.000 0.900 1.000 false

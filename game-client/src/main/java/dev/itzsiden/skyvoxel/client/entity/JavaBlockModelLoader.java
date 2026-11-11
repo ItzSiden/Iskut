@@ -102,20 +102,31 @@ public final class JavaBlockModelLoader {
             float originX = 0, originY = 0, originZ = 0;
             if (element.containsKey("rotation")) {
                 Map<String, Object> rotation = object(element.get("rotation"), "element.rotation", modelPath);
-                float angle = number(rotation.getOrDefault("angle", 0.0), "rotation.angle", modelPath);
-                if (Math.abs(angle) > 180.0f) throw bad(modelPath, "element '" + partId + "' rotation angle must be within -180..180 degrees");
-                String axis = rotation.get("axis") instanceof String s ? s.toLowerCase(Locale.ROOT) : "y";
                 List<Object> origin = rotation.containsKey("origin")
                     ? vector(rotation.get("origin"), "rotation.origin", modelPath) : List.of(8.0, 8.0, 8.0);
                 originX = (number(origin.get(0), "origin.x", modelPath) - 8.0f) * COORDINATE_SCALE;
                 originY = (number(origin.get(1), "origin.y", modelPath) - 8.0f) * COORDINATE_SCALE;
                 originZ = (number(origin.get(2), "origin.z", modelPath) - 8.0f) * COORDINATE_SCALE;
-                float radians = (float) Math.toRadians(angle);
-                switch (axis) {
-                    case "x" -> rotationX = radians;
-                    case "y" -> rotationY = radians;
-                    case "z" -> rotationZ = radians;
-                    default -> throw bad(modelPath, "element '" + partId + "' has unsupported rotation axis '" + axis + "'");
+                boolean eulerRotation = rotation.containsKey("x") || rotation.containsKey("y") || rotation.containsKey("z");
+                boolean axisRotation = rotation.containsKey("angle") || rotation.containsKey("axis");
+                if (eulerRotation && axisRotation)
+                    throw bad(modelPath, "element '" + partId + "' rotation cannot mix Euler and angle/axis fields");
+                if (eulerRotation) {
+                    rotationX = rotationRadians(rotation.getOrDefault("x", 0.0), "rotation.x", partId, modelPath);
+                    rotationY = rotationRadians(rotation.getOrDefault("y", 0.0), "rotation.y", partId, modelPath);
+                    rotationZ = rotationRadians(rotation.getOrDefault("z", 0.0), "rotation.z", partId, modelPath);
+                } else {
+                    float angle = number(rotation.getOrDefault("angle", 0.0), "rotation.angle", modelPath);
+                    if (Math.abs(angle) > 180.0f)
+                        throw bad(modelPath, "element '" + partId + "' rotation angle must be within -180..180 degrees");
+                    String axis = rotation.get("axis") instanceof String s ? s.toLowerCase(Locale.ROOT) : "y";
+                    float radians = (float) Math.toRadians(angle);
+                    switch (axis) {
+                        case "x" -> rotationX = radians;
+                        case "y" -> rotationY = radians;
+                        case "z" -> rotationZ = radians;
+                        default -> throw bad(modelPath, "element '" + partId + "' has unsupported rotation axis '" + axis + "'");
+                    }
                 }
             }
             float[] rotatedCenter = rotateAroundPivot(centerX, centerY, centerZ, originX, originY, originZ,
@@ -288,6 +299,13 @@ public final class JavaBlockModelLoader {
         float y2 = y1;
         float z2 = -sy * x1 + cy * z1;
         return new float[]{px + cz * x2 - sz * y2, py + sz * x2 + cz * y2, pz + z2};
+    }
+
+    private static float rotationRadians(Object value, String field, String partId, Path path) throws IOException {
+        float degrees = number(value, field, path);
+        if (Math.abs(degrees) > 180.0f)
+            throw bad(path, "element '" + partId + "' " + field + " must be within -180..180 degrees");
+        return (float) Math.toRadians(degrees);
     }
 
     private static String uniqueId(String candidate, Set<String> used) {

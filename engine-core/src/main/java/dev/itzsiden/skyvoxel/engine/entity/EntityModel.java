@@ -24,7 +24,7 @@ public record EntityModel(String id, float height, List<Part> parts) {
     }
 
     /**
-     * Part transforms support the three single-axis rotations emitted by Blockbench Java models.
+     * Part transforms support Euler rotations imported from Blockbench models.
      * Most Iskut legacy parts use only rotationY; the ten-argument constructor remains compatible.
      */
     public record Part(String id, Mesh mesh, Material material,

@@ -161,22 +161,22 @@ CUBOID fountain_water_0 shallow_water 0.000 0.575 -0.000 3.800 0.050 3.800 false
 CUBOID fountain_pillar_0 stone_light 0.000 1.400 0.000 1.000 1.600 1.000 true
 CUBOID fountain_bowl_0 stone_light 0.000 2.350 0.000 2.000 0.300 2.000 true
 CUBOID fountain_spout_0 gold 0.000 2.800 0.000 0.700 0.600 0.700 true
-CUBOID lamp_base_0 stone_dark -10.400 2.250 -9.400 0.800 0.500 0.800 true
-CUBOID lamp_post_0 wood -10.400 4.250 -9.400 0.400 3.500 0.400 true
-CUBOID lamp_head_0 gold -10.400 6.450 -9.400 1.000 0.900 1.000 true
-CUBOID lamp_cap_0 wood -10.400 7.050 -9.400 1.400 0.300 1.400 true
-CUBOID lamp_base_1 stone_dark 10.400 2.250 -9.400 0.800 0.500 0.800 true
-CUBOID lamp_post_1 wood 10.400 4.250 -9.400 0.400 3.500 0.400 true
-CUBOID lamp_head_1 gold 10.400 6.450 -9.400 1.000 0.900 1.000 true
-CUBOID lamp_cap_1 wood 10.400 7.050 -9.400 1.400 0.300 1.400 true
-CUBOID lamp_base_2 stone_dark -10.400 2.250 9.400 0.800 0.500 0.800 true
-CUBOID lamp_post_2 wood -10.400 4.250 9.400 0.400 3.500 0.400 true
-CUBOID lamp_head_2 gold -10.400 6.450 9.400 1.000 0.900 1.000 true
-CUBOID lamp_cap_2 wood -10.400 7.050 9.400 1.400 0.300 1.400 true
-CUBOID lamp_base_3 stone_dark 10.400 2.250 9.400 0.800 0.500 0.800 true
-CUBOID lamp_post_3 wood 10.400 4.250 9.400 0.400 3.500 0.400 true
-CUBOID lamp_head_3 gold 10.400 6.450 9.400 1.000 0.900 1.000 true
-CUBOID lamp_cap_3 wood 10.400 7.050 9.400 1.400 0.300 1.400 true
+CUBOID lamp_base_0 stone_dark -10.400 0.250 -9.400 0.800 0.500 0.800 true
+CUBOID lamp_post_0 wood -10.400 2.250 -9.400 0.400 3.500 0.400 true
+CUBOID lamp_head_0 gold -10.400 4.450 -9.400 1.000 0.900 1.000 true
+CUBOID lamp_cap_0 wood -10.400 5.050 -9.400 1.400 0.300 1.400 true
+CUBOID lamp_base_1 stone_dark 10.400 0.250 -9.400 0.800 0.500 0.800 true
+CUBOID lamp_post_1 wood 10.400 2.250 -9.400 0.400 3.500 0.400 true
+CUBOID lamp_head_1 gold 10.400 4.450 -9.400 1.000 0.900 1.000 true
+CUBOID lamp_cap_1 wood 10.400 5.050 -9.400 1.400 0.300 1.400 true
+CUBOID lamp_base_2 stone_dark -10.400 0.250 9.400 0.800 0.500 0.800 true
+CUBOID lamp_post_2 wood -10.400 2.250 9.400 0.400 3.500 0.400 true
+CUBOID lamp_head_2 gold -10.400 4.450 9.400 1.000 0.900 1.000 true
+CUBOID lamp_cap_2 wood -10.400 5.050 9.400 1.400 0.300 1.400 true
+CUBOID lamp_base_3 stone_dark 10.400 0.250 9.400 0.800 0.500 0.800 true
+CUBOID lamp_post_3 wood 10.400 2.250 9.400 0.400 3.500 0.400 true
+CUBOID lamp_head_3 gold 10.400 4.450 9.400 1.000 0.900 1.000 true
+CUBOID lamp_cap_3 wood 10.400 5.050 9.400 1.400 0.300 1.400 true
 CUBOID crate_6 wood_light -3.000 2.700 8.600 1.400 1.400 1.400 true
 CUBOID crate_edge_24 wood -3.605 2.720 7.995 0.190 1.440 0.190 true
 CUBOID crate_edge_25 wood -3.605 2.720 9.205 0.190 1.440 0.290 true
@@ -196,3 +196,8 @@ CUBOID crate_edge_32 wood -3.055 1.970 7.945 0.190 1.140 0.190 true
 CUBOID crate_edge_33 wood -3.055 1.970 8.855 0.190 1.140 0.290 true
 CUBOID crate_edge_34 wood -2.145 1.970 7.945 0.290 1.140 0.190 true
 CUBOID crate_edge_35 wood -2.145 1.970 8.855 0.290 1.140 0.290 true
+
+# A tiny crystal accent turns the existing fountain into the market's focal point
+CUBOID bazaar_fountain_jewel_base gold 0.000 3.050 0.000 1.100 0.220 1.100 false
+CUBOID bazaar_fountain_crystal_0 crystal 0.000 3.650 0.000 0.700 0.900 0.700 false
+CUBOID bazaar_fountain_glint_0 cyan 0.000 3.650 0.390 0.240 0.300 0.120 false

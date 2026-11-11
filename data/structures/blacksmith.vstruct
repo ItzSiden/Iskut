@@ -110,3 +110,22 @@ CUBOID barrel_3 wood 3.600 2.650 -7.600 1.100 1.300 1.100 true
 CUBOID barrel_band_6 slate 3.600 2.325 -7.600 1.200 0.150 1.200 true
 CUBOID barrel_band_7 slate 3.600 2.975 -7.600 1.200 0.150 1.200 true
 CUBOID barrel_lid_3 wood_light 3.600 3.330 -7.600 0.900 0.060 0.900 true
+
+# Stone column feet and forge-side entrance sconces
+CUBOID smith_column_base_0 stone_light -5.500 0.400 -4.500 1.800 0.300 1.800 false
+CUBOID smith_column_base_1 stone_light 5.500 0.400 -4.500 1.800 0.300 1.800 false
+CUBOID smith_column_base_2 stone_light -5.500 0.400 4.500 1.800 0.300 1.800 false
+CUBOID smith_column_base_3 stone_light 5.500 0.400 4.500 1.800 0.300 1.800 false
+CUBOID smith_column_band_0 gold -5.500 5.700 -4.500 1.650 0.250 1.650 false
+CUBOID smith_column_band_1 gold 5.500 5.700 -4.500 1.650 0.250 1.650 false
+CUBOID smith_column_band_2 gold -5.500 5.700 4.500 1.650 0.250 1.650 false
+CUBOID smith_column_band_3 gold 5.500 5.700 4.500 1.650 0.250 1.650 false
+CUBOID smith_sconce_mount_0 gold -3.000 3.850 -5.180 0.500 0.800 0.180 false
+CUBOID smith_sconce_glow_0 cyan -3.000 3.850 -5.305 0.220 0.500 0.080 false
+CUBOID smith_sconce_mount_1 gold 3.000 3.850 -5.180 0.500 0.800 0.180 false
+CUBOID smith_sconce_glow_1 cyan 3.000 3.850 -5.305 0.220 0.500 0.080 false
+# Reinforced chimney crown and a restrained ember band around the forge
+CUBOID smith_chimney_trim_0 brick 3.000 9.600 3.300 2.350 0.300 1.750 false
+CUBOID smith_chimney_crown_0 stone_light 3.000 11.450 3.300 2.900 0.220 2.250 false
+CUBOID smith_forge_trim_0 gold 3.000 1.950 2.600 3.800 0.120 3.000 false
+CUBOID smith_forge_ember_0 cyan 3.000 2.050 2.600 0.800 0.080 0.800 false

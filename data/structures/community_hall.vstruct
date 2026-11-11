@@ -97,22 +97,27 @@ CUBOID hall_inner_banner_0 slate -6.000 4.590 -6.940 1.600 3.500 0.120 true
 CUBOID hall_inner_banner_1 gold -2.500 4.590 -6.940 1.600 3.500 0.120 true
 CUBOID hall_inner_banner_2 slate 2.500 4.590 -6.940 1.600 3.500 0.120 true
 CUBOID hall_inner_banner_3 gold 6.000 4.590 -6.940 1.600 3.500 0.120 true
-CUBOID bench_seat_0 wood_light -6.000 0.940 -0.500 6.500 0.200 0.800 true
-CUBOID bench_leg_0 wood -8.900 0.590 -0.500 0.300 0.500 0.600 true
-CUBOID bench_leg_1 wood -3.100 0.590 -0.500 0.300 0.500 0.600 true
-CUBOID bench_seat_1 wood_light 6.000 0.940 -0.500 6.500 0.200 0.800 true
-CUBOID bench_leg_2 wood 3.100 0.590 -0.500 0.300 0.500 0.600 true
-CUBOID bench_leg_3 wood 8.900 0.590 -0.500 0.300 0.500 0.600 true
-CUBOID bench_seat_2 wood_light -6.000 0.940 2.000 6.500 0.200 0.800 true
-CUBOID bench_leg_4 wood -8.900 0.590 2.000 0.300 0.500 0.600 true
-CUBOID bench_leg_5 wood -3.100 0.590 2.000 0.300 0.500 0.600 true
-CUBOID bench_seat_3 wood_light 6.000 0.940 2.000 6.500 0.200 0.800 true
-CUBOID bench_leg_6 wood 3.100 0.590 2.000 0.300 0.500 0.600 true
-CUBOID bench_leg_7 wood 8.900 0.590 2.000 0.300 0.500 0.600 true
-CUBOID bench_seat_4 wood_light -6.000 0.940 4.500 6.500 0.200 0.800 true
-CUBOID bench_leg_8 wood -8.900 0.590 4.500 0.300 0.500 0.600 true
-CUBOID bench_leg_9 wood -3.100 0.590 4.500 0.300 0.500 0.600 true
-CUBOID bench_seat_5 wood_light 6.000 0.940 4.500 6.500 0.200 0.800 true
-CUBOID bench_leg_10 wood 3.100 0.590 4.500 0.300 0.500 0.600 true
-CUBOID bench_leg_11 wood 8.900 0.590 4.500 0.300 0.500 0.600 true
+MODEL bench_0 ../blocks/models/bench.json -6.000 1.340 -0.500 5.630 2.000 1.900 true 0 0 0
+MODEL bench_1 ../blocks/models/bench.json 6.000 1.340 -0.500 5.630 2.000 1.900 true 0 0 0
+MODEL bench_2 ../blocks/models/bench.json -6.000 1.340 2.000 5.630 2.000 1.900 true 0 0 0
+MODEL bench_3 ../blocks/models/bench.json 6.000 1.340 2.000 5.630 2.000 1.900 true 0 0 0
+MODEL bench_4 ../blocks/models/bench.json -6.000 1.340 4.500 5.630 2.000 1.900 true 0 0 0
+MODEL bench_5 ../blocks/models/bench.json 6.000 1.340 4.500 5.630 2.000 1.900 true 0 0 0
 CUBOID hall_table_0 wood 0.000 0.840 -2.000 2.400 1.000 0.800 true
+
+# Polished timber column bases and subtle entrance sconces
+CUBOID hall_column_base_0 stone_dark -12.500 0.400 -7.500 1.800 0.400 1.800 false
+CUBOID hall_column_base_1 stone_dark 12.500 0.400 -7.500 1.800 0.400 1.800 false
+CUBOID hall_column_base_2 stone_dark -12.500 0.400 7.500 1.800 0.400 1.800 false
+CUBOID hall_column_base_3 stone_dark 12.500 0.400 7.500 1.800 0.400 1.800 false
+CUBOID hall_column_band_0 wood_light -12.500 6.950 -7.500 1.650 0.240 1.650 false
+CUBOID hall_column_band_1 wood_light 12.500 6.950 -7.500 1.650 0.240 1.650 false
+CUBOID hall_column_band_2 wood_light -12.500 6.950 7.500 1.650 0.240 1.650 false
+CUBOID hall_column_band_3 wood_light 12.500 6.950 7.500 1.650 0.240 1.650 false
+CUBOID hall_sconce_mount_0 gold -4.350 4.450 8.180 0.520 0.820 0.180 false
+CUBOID hall_sconce_glow_0 cyan -4.350 4.450 8.305 0.240 0.520 0.080 false
+CUBOID hall_sconce_mount_1 gold 4.350 4.450 8.180 0.520 0.820 0.180 false
+CUBOID hall_sconce_glow_1 cyan 4.350 4.450 8.305 0.240 0.520 0.080 false
+# A small crystal crest crowns the existing stepped roof
+CUBOID hall_roof_jewel_base gold 0.000 13.150 0.000 2.200 0.300 2.200 false
+CUBOID hall_roof_crystal_0 crystal 0.000 13.750 0.000 1.100 1.200 1.100 false

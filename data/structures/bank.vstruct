@@ -86,3 +86,21 @@ CUBOID bank_gold_0 gold -4.800 0.640 -4.000 1.800 0.600 1.200 true
 CUBOID bank_gold_1 gold -4.800 1.190 -4.000 1.200 0.500 0.800 true
 CUBOID bank_gold_2 gold 4.800 0.640 -4.000 1.800 0.600 1.200 true
 CUBOID bank_gold_3 gold 4.800 1.190 -4.000 1.200 0.500 0.800 true
+
+# Refined column plinths and gold capitals
+CUBOID bank_column_base_0 stone_light -6.500 0.400 -5.500 1.800 0.200 1.800 false
+CUBOID bank_column_base_1 stone_light 6.500 0.400 -5.500 1.800 0.200 1.800 false
+CUBOID bank_column_base_2 stone_light -6.500 0.400 5.500 1.800 0.200 1.800 false
+CUBOID bank_column_base_3 stone_light 6.500 0.400 5.500 1.800 0.200 1.800 false
+CUBOID bank_column_cap_0 gold -6.500 6.250 -5.500 1.700 0.300 1.700 false
+CUBOID bank_column_cap_1 gold 6.500 6.250 -5.500 1.700 0.300 1.700 false
+CUBOID bank_column_cap_2 gold -6.500 6.250 5.500 1.700 0.300 1.700 false
+CUBOID bank_column_cap_3 gold 6.500 6.250 5.500 1.700 0.300 1.700 false
+# Cyan wall lamps flank the public entrance
+CUBOID bank_sconce_mount_0 gold -3.150 4.050 6.180 0.520 0.820 0.180 false
+CUBOID bank_sconce_glow_0 cyan -3.150 4.050 6.305 0.240 0.520 0.080 false
+CUBOID bank_sconce_mount_1 gold 3.150 4.050 6.180 0.520 0.820 0.180 false
+CUBOID bank_sconce_glow_1 cyan 3.150 4.050 6.305 0.240 0.520 0.080 false
+# Roof crest echoes the bank's gold vault detailing
+CUBOID bank_roof_jewel_base gold 0.000 12.150 0.000 1.800 0.300 1.800 false
+CUBOID bank_roof_crystal_0 crystal 0.000 12.650 0.000 0.900 0.900 0.900 false

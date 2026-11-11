@@ -56,14 +56,30 @@ public final class BlockbenchModelSmokeTest {
                       "west":{"uv":[0,0,16,16],"texture":"#main"},
                       "up":{"uv":[0,0,16,16],"texture":"#main"},
                       "down":{"uv":[0,0,16,16],"texture":"#main"}
+                    }},
+                    {"name":"euler_rotated","from":[0,0,0],"to":[8,8,8],
+                     "rotation":{"x":30,"y":20,"z":10,"origin":[8,8,8]},"faces":{
+                      "north":{"uv":[0,0,16,16],"texture":"#main"},
+                      "south":{"uv":[0,0,16,16],"texture":"#main"},
+                      "east":{"uv":[0,0,16,16],"texture":"#main"},
+                      "west":{"uv":[0,0,16,16],"texture":"#main"},
+                      "up":{"uv":[0,0,16,16],"texture":"#main"},
+                      "down":{"uv":[0,0,16,16],"texture":"#main"}
                     }}
                   ]
                 }
                 """);
             var thinModel = new JavaBlockModelLoader().load(model, textureRoot, null);
-            require(thinModel.parts().size() == 2, "both imported elements should render");
+            require(thinModel.parts().size() == 3, "all imported elements should render");
             require(!thinModel.parts().get(0).collisionEligible(), "zero-thickness visual panel must not become a collider");
             require(thinModel.parts().get(1).collisionEligible(), "solid cuboid should be eligible for structure collision");
+            var eulerPart = thinModel.parts().get(2);
+            require(close(eulerPart.rotationX(), (float) Math.toRadians(30)), "Blockbench Euler X rotation should be imported");
+            require(close(eulerPart.rotationY(), (float) Math.toRadians(20)), "Blockbench Euler Y rotation should be imported");
+            require(close(eulerPart.rotationZ(), (float) Math.toRadians(10)), "Blockbench Euler Z rotation should be imported");
+            require(!close(eulerPart.offsetX(), -0.25f) || !close(eulerPart.offsetY(), -0.25f)
+                    || !close(eulerPart.offsetZ(), -0.25f),
+                "Blockbench Euler rotation should rotate the element around its origin");
 
             Path tempMap = root.resolve("data/maps/__blockbench_model_smoke.vmap");
             Files.writeString(tempMap, """

@@ -375,6 +375,13 @@ final class PlayerController {
 
     void setInputEnabled(boolean enabled) { inputEnabled = enabled; }
 
+    /** Moves the player with a moving vehicle while preserving the current view orientation. */
+    void setVehiclePosition(double px, double py, double pz, double vehicleYaw) {
+        x = px; feetY = py; z = pz; yaw = vehicleYaw;
+        velocityX = velocityZ = verticalVelocity = 0.0;
+        grounded = true; peakAirY = py; cameraBob = 0.0; landingDip = 0.0; stepCameraLag = 0.0;
+    }
+
     void teleportToSpawn() {
         x = spawnX; feetY = spawnY; z = spawnZ; yaw = spawnYaw; pitch = 0;
         velocityX = velocityZ = verticalVelocity = 0;

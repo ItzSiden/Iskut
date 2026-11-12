@@ -1,0 +1,16 @@
+# Iskut harbor shipwright. Coordinates are local to the feet origin.
+SKYVOXEL_ENTITY_MODEL 1
+NAME Captain_Rowan
+HEIGHT 2.05
+PART boots_left brown -0.15 0.13 0.00 0.24 0.26 0.34 0
+PART boots_right brown 0.15 0.13 0.00 0.24 0.26 0.34 0
+PART trousers navy 0.00 0.52 0.00 0.48 0.62 0.34 0
+PART coat teal 0.00 1.08 0.00 0.62 0.66 0.38 0
+PART belt brown 0.00 0.78 -0.01 0.64 0.12 0.40 0
+PART head skin 0.00 1.57 -0.01 0.40 0.40 0.40 0
+PART hair brown 0.00 1.76 0.02 0.43 0.16 0.43 0
+PART hat_brim gold 0.00 1.88 0.00 0.58 0.12 0.58 0
+PART hat_top navy 0.00 2.02 0.00 0.40 0.18 0.40 0
+PART arm_left teal -0.40 1.08 0.00 0.20 0.60 0.26 0
+PART arm_right teal 0.40 1.08 0.00 0.20 0.60 0.26 0
+PART shoulder_badge gold -0.26 1.35 -0.20 0.16 0.18 0.06 0

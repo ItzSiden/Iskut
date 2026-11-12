@@ -19,6 +19,7 @@ import dev.itzsiden.skyvoxel.engine.persistence.JsonFilePlayerDataRepository;
 import dev.itzsiden.skyvoxel.engine.persistence.PlayerDataRepository;
 import dev.itzsiden.skyvoxel.engine.persistence.PlayerDataSnapshot;
 import dev.itzsiden.skyvoxel.client.ui.InventoryOverlay;
+import dev.itzsiden.skyvoxel.client.ui.ShipMenuOverlay;
 import dev.itzsiden.skyvoxel.client.map.GameMap;
 import dev.itzsiden.skyvoxel.client.map.MapLoader;
 import dev.itzsiden.skyvoxel.client.entity.EntityModelLoader;
@@ -134,6 +135,7 @@ public final class ClientMain {
                         + " | interactables: " + loadedMap.interactions().size());
                 }
                 loadingScreen.present(renderer, window, 0.30f, "Building the world...");
+                if (loadedMap != null) IslandArchipelago.populate(scene, renderScene);
                 StaticCollisionWorld collisionWorld = new StaticCollisionWorld(scene);
                 PlayerController player = loadedMap == null
                     ? new PlayerController(collisionWorld)
@@ -146,6 +148,8 @@ public final class ClientMain {
                 EntityModel playerModel = entityModelLoader.load(dataPath("data/entities/models/astral_traveler.vmodel"));
                 EntityModel guideModel = entityModelLoader.load(dataPath("data/entities/models/guide_elyra.vmodel"));
                 EntityModel wispModel = entityModelLoader.load(dataPath("data/entities/models/sky_wisp.vmodel"));
+                EntityModel captainModel = entityModelLoader.load(dataPath("data/entities/models/captain_rowan.vmodel"));
+                EntityModel shipModel = entityModelLoader.load(dataPath("data/entities/models/harbor_cutter.vmodel"));
                 EntityWorld entityWorld = new EntityWorld();
                 Entity localPlayerEntity = new Entity("player-local", EntityType.PLAYER, playerModel, "You", "LOCAL PLAYER")
                     .setModelVisible(false).setShowNameplate(false).setShowHealthBar(false)
@@ -159,6 +163,9 @@ public final class ClientMain {
                     .map(EntityRaycast::hitbox).toList());
                 entityWorld.add(new Entity("npc-guide-elyra", EntityType.NPC, guideModel, "Elyra", "GUIDE • ISKUT")
                     .setPosition(-5.5f, 1.18f, -3.5f).setYaw(0.0f).setHealth(20, 20).setShowHealthBar(false));
+                Entity shipwright = new Entity("npc-shipwright-rowan", EntityType.NPC, captainModel, "Captain Rowan", "SHIPWRIGHT â€¢ HARBOR")
+                    .setPosition(-8.5f, 1.18f, 59.8f).setYaw(0.0f).setHealth(20, 20).setShowHealthBar(false);
+                entityWorld.add(shipwright);
                 Entity skyWisp = new Entity("mob-sky-wisp-01", EntityType.MOB, wispModel, "Sky Wisp", "LV. 3 • HOSTILE")
                     .setPosition(-3.5f, 1.38f, 4.0f).setHealth(20, 20).setDefense(4.0f);
                 entityWorld.add(skyWisp);
@@ -203,9 +210,12 @@ public final class ClientMain {
                 EntityInteractionRegistry entityInteractions = new EntityInteractionRegistry()
                     .register("npc-guide-elyra", "Talk", npc -> npc.displayName()
                         + ": Welcome to Iskut Harbor! Explore the island and watch for hostile creatures beyond the safe paths.");
+                entityInteractions.register("npc-shipwright-rowan", "Open Ship Menu", npc -> "Choose a vessel and sail to the outer islands.");
                 HostileMobSystem hostileMobs = new HostileMobSystem();
                 hostileMobs.register(skyWisp, 7.5f, 1.25f, 2.15f, 9.0f, 1.35f, 0.34f, 9.0f);
                 EntityRenderSystem entityRenderSystem = new EntityRenderSystem();
+                ShipExplorationSystem shipExploration = new ShipExplorationSystem(entityWorld, shipModel);
+                ShipMenuOverlay shipMenu = new ShipMenuOverlay();
                 Camera camera = new Camera();
                 long previousTime = System.nanoTime();
                 long lastPlayerSaveNanos = previousTime;
@@ -311,6 +321,7 @@ public final class ClientMain {
                 boolean previousF1Down = false;
                 InventoryOverlay inventoryUi = new InventoryOverlay();
                 inventoryUi.setItemVisuals(itemVisuals);
+                boolean shipMenuOpen = false;
                 long skyShards = inventory.countItem("sky_shard");
                 String interactionMessage = "";
                 long interactionMessageUntil = 0L;
@@ -357,9 +368,10 @@ public final class ClientMain {
                     boolean leftClicked = leftDown && !previousLeftDown;
                     boolean rightDown = window.isMouseButtonDown(MouseButton.RIGHT);
                     MousePosition cursor = window.cursorPosition();
+                    boolean shipMenuClickHandled = false;
 
                     boolean inventoryDown = window.isKeyDown(Key.I);
-                    if (screen == GameScreen.PLAYING && inventoryDown && !previousInventoryDown) {
+                    if (screen == GameScreen.PLAYING && inventoryDown && !previousInventoryDown && !shipMenuOpen) {
                         if (!inventoryUi.visible()) {
                             inventoryUi.setVisible(true);
                             window.setMouseCaptured(false);
@@ -369,7 +381,24 @@ public final class ClientMain {
                         }
                     }
                     previousInventoryDown = inventoryDown;
-                    if (screen == GameScreen.PLAYING && escapePressed) {
+                    if (screen == GameScreen.PLAYING && shipMenuOpen && leftClicked) {
+                        shipMenuClickHandled = true;
+                        ShipMenuOverlay.Action action = shipMenu.handleClick(window.uiWidth(), window.uiHeight(), cursor.x(), cursor.y());
+                        if (action == ShipMenuOverlay.Action.SUMMON) {
+                            shipExploration.summonAndBoard(player);
+                            shipMenuOpen = false;
+                            window.setMouseCaptured(true);
+                            interactionMessage = "Vessel summoned. W/S sail â€¢ A/D steer â€¢ E disembark near land.";
+                            interactionMessageUntil = System.nanoTime() + 4_000_000_000L;
+                        } else if (action == ShipMenuOverlay.Action.CLOSE) {
+                            shipMenuOpen = false;
+                            window.setMouseCaptured(true);
+                        }
+                    }
+                    if (screen == GameScreen.PLAYING && escapePressed && shipMenuOpen) {
+                        shipMenuOpen = false;
+                        window.setMouseCaptured(true);
+                    } else if (screen == GameScreen.PLAYING && escapePressed) {
                         if (inventoryUi.visible()) {
                             if (inventoryUi.closeWithCursorRecovery(inventory, itemCatalog)) {
                                 inventoryUi.setVisible(false);
@@ -473,9 +502,14 @@ public final class ClientMain {
                     float deltaSeconds = (now - previousTime) / 1_000_000_000.0f;
                     previousTime = now;
                     heldSwingTimer = Math.max(0.0f, heldSwingTimer - Math.max(0.0f, deltaSeconds));
-                    player.setInputEnabled(playerStats.alive() && !inventoryOpen && respawnAtNanos == 0L);
+                    boolean ridingVessel = shipExploration.boarded();
+                    player.setInputEnabled(playerStats.alive() && !inventoryOpen && !shipMenuOpen && !ridingVessel && respawnAtNanos == 0L);
                     player.setMovementMultiplier(playerStats.movementSpeedMultiplier());
-                    player.update(window, deltaSeconds);
+                    if (ridingVessel && playerStats.alive() && respawnAtNanos == 0L) {
+                        shipExploration.update(window, deltaSeconds, player);
+                    } else {
+                        player.update(window, deltaSeconds);
+                    }
                     // There is no invisible global floor: if the player falls through the ocean,
                     // the sea becomes a real world hazard and uses the normal death/respawn flow.
                     if (player.belowOceanRespawnPlane() && playerStats.alive()) {
@@ -524,17 +558,21 @@ public final class ClientMain {
                     double rayOriginX = player.x();
                     double rayOriginY = player.feetY() + player.eyeHeight() + player.cameraBob();
                     double rayOriginZ = player.z();
-                    Optional<EntityRaycast.Hit> entityHit = inventoryOpen ? Optional.empty() : EntityRaycast.raycast(
+                    Optional<EntityRaycast.Hit> entityHit = (inventoryOpen || shipMenuOpen || shipMenuClickHandled) ? Optional.empty() : EntityRaycast.raycast(
                         entityWorld, collisionWorld, localPlayerEntity.id(),
                         rayOriginX, rayOriginY, rayOriginZ, rayX, rayY, rayZ, 6.0);
                     Optional<RaycastHit> hit = targeting.update(
                         rayOriginX, rayOriginY, rayOriginZ, rayX, rayY, rayZ,
-                        !inventoryOpen && !uiMouseHandled && leftClicked && entityHit.isEmpty(),
-                        !inventoryOpen && !uiMouseHandled && rightClicked && entityHit.isEmpty());
+                        !inventoryOpen && !shipMenuOpen && !shipMenuClickHandled && !uiMouseHandled && leftClicked && entityHit.isEmpty(),
+                        !inventoryOpen && !shipMenuOpen && !shipMenuClickHandled && !uiMouseHandled && rightClicked && entityHit.isEmpty());
 
-                    if (!inventoryOpen && !uiMouseHandled && leftClicked && entityHit.isPresent()) {
+                    if (!inventoryOpen && !shipMenuOpen && !shipMenuClickHandled && !uiMouseHandled && leftClicked && entityHit.isPresent()) {
                         Entity clicked = entityHit.get().entity();
-                        if (clicked.type() == EntityType.MOB) {
+                        if (clicked.type() == EntityType.NPC && clicked.id().equals("npc-shipwright-rowan")) {
+                            shipMenuOpen = true;
+                            window.setMouseCaptured(false);
+                            profilePanel.setVisible(false);
+                        } else if (clicked.type() == EntityType.MOB) {
                             interactionMessage = hostileMobs.playerAttack(clicked, entityWorld, playerStats);
                             if (interactionMessage.isBlank()) interactionMessage = "You cannot attack that target right now.";
                             interactionMessageUntil = System.nanoTime() + 2_400_000_000L;
@@ -575,12 +613,29 @@ public final class ClientMain {
                     boolean eDown = window.isKeyDown(Key.E);
                     boolean interactPressed = eDown && !previousEDown;
                     previousEDown = eDown;
-                    if (!inventoryOpen && interactPressed && entityHit.isPresent() && entityHit.get().entity().type() == EntityType.NPC) {
+                    if (!inventoryOpen && !shipMenuOpen && interactPressed && shipExploration.boarded()) {
+                        boolean leftVessel = shipExploration.disembark(player);
+                        interactionMessage = leftVessel
+                            ? "You left the helm. Press E near your vessel to board again."
+                            : "Sail close to the harbor or an island before disembarking.";
+                        interactionMessageUntil = System.nanoTime() + 3_000_000_000L;
+                    } else if (!inventoryOpen && !shipMenuOpen && interactPressed && shipExploration.canBoard(player)) {
+                        shipExploration.board(player);
+                        window.setMouseCaptured(true);
+                        interactionMessage = "Vessel boarded. W/S sail - A/D steer - E disembark near land";
+                        interactionMessageUntil = System.nanoTime() + 3_000_000_000L;
+                    } else if (!inventoryOpen && !shipMenuOpen && interactPressed && entityHit.isPresent() && entityHit.get().entity().type() == EntityType.NPC) {
                         Entity npc = entityHit.get().entity();
-                        interactionMessage = entityInteractions.interact(npc).orElse("This NPC has no interaction configured yet.");
+                        if (npc.id().equals("npc-shipwright-rowan")) {
+                            shipMenuOpen = true;
+                            window.setMouseCaptured(false);
+                            interactionMessage = "Captain Rowan: Pick a vessel and explore beyond the harbor.";
+                        } else {
+                            interactionMessage = entityInteractions.interact(npc).orElse("This NPC has no interaction configured yet.");
+                        }
                         interactionMessageUntil = System.nanoTime() + 6_000_000_000L;
                         profilePanel.setVisible(false);
-                    } else if (!inventoryOpen && interactPressed && loadedMap != null && targeting.target() != null && entityHit.isEmpty()) {
+                    } else if (!inventoryOpen && !shipMenuOpen && interactPressed && loadedMap != null && targeting.target() != null && entityHit.isEmpty()) {
                         var targetObject = targeting.target();
                         GameMap.Interaction interaction = loadedMap.interactions().get(targetObject.id());
                         if (interaction != null) {
@@ -605,7 +660,9 @@ public final class ClientMain {
 
                     if (hit.isPresent() && loadedMap != null && targeting.target() == null) hit = Optional.empty();
                     String targetStatus;
-                    if (entityHit.isPresent() && entityWorld.get(entityHit.get().entity().id()) != null) {
+                    if (shipExploration.boarded()) {
+                        targetStatus = "[E] Disembark near land  â€¢  W/S sail  â€¢  A/D steer";
+                    } else if (entityHit.isPresent() && entityWorld.get(entityHit.get().entity().id()) != null) {
                         Entity targetEntity = entityHit.get().entity();
                         targetStatus = switch (targetEntity.type()) {
                             case NPC -> targetEntity.displayName() + "  |  " + targetEntity.subtitle() + "  |  [E] "
@@ -634,7 +691,9 @@ public final class ClientMain {
 
                     String prompt = "";
                     long promptNow = System.nanoTime();
-                    if (promptNow < interactionMessageUntil) {
+                    if (shipExploration.boarded()) {
+                        prompt = "[E] Disembark near land  â€¢  W/S sail  â€¢  A/D steer";
+                    } else if (promptNow < interactionMessageUntil) {
                         prompt = interactionMessage;
                     } else if (entityHit.isPresent() && entityWorld.get(entityHit.get().entity().id()) != null) {
                         Entity targetEntity = entityHit.get().entity();
@@ -734,6 +793,8 @@ public final class ClientMain {
                         .addAll(hud.build(uiWidth, uiHeight))
                         .addAll(entityHolograms)
                         .addAll(inventoryUi.build(uiWidth, uiHeight, inventory, itemCatalog, playerStats));
+                    if (shipExploration.boarded()) combinedUi.addAll(shipMenu.buildHud(uiWidth, uiHeight, shipExploration.speed()));
+                    if (shipMenuOpen) combinedUi.addAll(shipMenu.build(uiWidth, uiHeight, cursor.x(), cursor.y()));
                     renderer.drawUi(combinedUi.build());
                     if (screenshotPressed) {
                         try {

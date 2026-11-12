@@ -1,0 +1,17 @@
+# Player-controlled low-poly harbor cutter. Forward is local -Z.
+SKYVOXEL_ENTITY_MODEL 1
+NAME Harbor_Cutter
+HEIGHT 3.10
+PART keel dark 0.00 0.12 0.00 1.55 0.28 5.40 0
+PART hull wood 0.00 0.34 0.00 2.85 0.50 6.20 0
+PART deck cream 0.00 0.69 0.00 2.35 0.18 4.90 0
+PART rail_left brown -1.32 0.76 0.00 0.22 0.72 5.75 0
+PART rail_right brown 1.32 0.76 0.00 0.22 0.72 5.75 0
+PART stern_plank #B88752 0.00 0.79 2.86 2.45 0.56 0.28 0
+PART bow_plank #B88752 0.00 0.70 -3.03 2.00 0.42 0.42 0
+PART bow_tip gold 0.00 0.55 -3.23 0.80 0.32 0.38 0
+PART seat #B88752 0.00 0.88 1.25 0.92 0.18 0.42 0
+PART mast wood 0.00 1.86 -0.35 0.18 2.35 0.18 0
+PART sail cream 0.00 1.90 -0.58 0.10 2.00 1.82 0
+PART boom brown 0.00 0.98 -0.58 2.10 0.14 0.14 0
+PART lantern gold 0.00 1.18 2.72 0.28 0.32 0.28 0

@@ -374,6 +374,19 @@ final class PlayerController {
     }
 
     void setInputEnabled(boolean enabled) { inputEnabled = enabled; }
+    void setExternalPose(double px, double py, double pz, double externalYaw, double externalPitch) {
+        if (!Double.isFinite(px) || !Double.isFinite(py) || !Double.isFinite(pz)
+            || !Double.isFinite(externalYaw) || !Double.isFinite(externalPitch)) {
+            throw new IllegalArgumentException("External player pose must be finite.");
+        }
+        x = px; feetY = py; z = pz; yaw = externalYaw;
+        double pitchLimit = Math.toRadians(75.0);
+        pitch = Math.max(-pitchLimit, Math.min(pitchLimit, externalPitch));
+        velocityX = velocityZ = verticalVelocity = 0.0;
+        horizontalSpeed = 0.0; moving = sprinting = crouching = false; grounded = true;
+        previousSpaceDown = false; jumpBufferRemaining = 0.0; coyoteRemaining = COYOTE_SECONDS;
+        peakAirY = feetY; pendingFallDamage = 0.0f; cameraBob = landingDip = stepCameraLag = 0.0;
+    }
 
     void teleportToSpawn() {
         x = spawnX; feetY = spawnY; z = spawnZ; yaw = spawnYaw; pitch = 0;

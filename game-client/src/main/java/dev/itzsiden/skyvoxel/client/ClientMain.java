@@ -136,6 +136,12 @@ public final class ClientMain {
                 }
                 loadingScreen.present(renderer, window, 0.30f, "Building the world...");
                 if (loadedMap != null) IslandArchipelago.populate(scene, renderScene);
+                // Infinite animated ocean replaces the old giant quad (it vanished in the software rasterizer).
+                OceanSurface ocean = null;
+                if (loadedMap != null) {
+                    OceanSurface.removeLegacyPlane(scene, renderScene);
+                    ocean = OceanSurface.load(dataPath("data/textures/world/water.png"));
+                }
                 StaticCollisionWorld collisionWorld = new StaticCollisionWorld(scene);
                 PlayerController player = loadedMap == null
                     ? new PlayerController(collisionWorld)
@@ -214,7 +220,7 @@ public final class ClientMain {
                 HostileMobSystem hostileMobs = new HostileMobSystem();
                 hostileMobs.register(skyWisp, 7.5f, 1.25f, 2.15f, 9.0f, 1.35f, 0.34f, 9.0f);
                 EntityRenderSystem entityRenderSystem = new EntityRenderSystem();
-                ShipExplorationSystem shipExploration = new ShipExplorationSystem(entityWorld, shipModel);
+                ShipExplorationSystem shipExploration = new ShipExplorationSystem(entityWorld, shipModel, collisionWorld);
                 ShipMenuOverlay shipMenu = new ShipMenuOverlay();
                 Camera camera = new Camera();
                 long previousTime = System.nanoTime();
@@ -332,6 +338,7 @@ public final class ClientMain {
                 long lastHudUpdate = previousTime;
                 int hudFrames = 0;
                 float currentFov = BASE_FOV;
+                float frameView = viewDistance;
                 float entityAnimationTime = 0.0f;
                 float heldSwingTimer = 0.0f;
                 final float heldSwingDuration = 0.30f;
@@ -536,10 +543,15 @@ public final class ClientMain {
                         continue;
                     }
 
+                    // While sailing, see far enough to spot the outer islands (they emerge from the fog).
+                    float targetView = shipExploration.boarded() ? Math.max(viewDistance, 150.0f) : viewDistance;
+                    frameView += (targetView - frameView) * (float) (1.0 - Math.exp(-2.5 * Math.max(0.0, Math.min(deltaSeconds, 0.05))));
+                    sceneRenderer.setMaxDrawDistance(frameView + 8.0f);
+                    entitySceneRenderer.setMaxDrawDistance(frameView + 4.0f);
                     float targetFov = player.sprinting() ? SPRINT_FOV : BASE_FOV;
                     float fovBlend = (float) (1.0 - Math.exp(-8.5 * Math.max(0.0, Math.min(deltaSeconds, 0.05))));
                     currentFov += (targetFov - currentFov) * fovBlend;
-                    camera.setPerspective(currentFov, 0.05f, viewDistance + 32.0f)
+                    camera.setPerspective(currentFov, 0.05f, frameView + 32.0f)
                         .setPosition((float) player.x(), (float) (player.feetY() + player.eyeHeight() + player.cameraBob()), (float) player.z())
                         .setRotation((float) player.yaw(), (float) player.pitch());
                     float[] viewProjection = camera.viewProjection(width, height);
@@ -746,7 +758,11 @@ public final class ClientMain {
 
                     SkyboxSettings skybox = SkyboxSettings.DAYLIGHT;
                     renderer.beginFrame(new RenderFrame(viewProjection, skybox.horizonRed(), skybox.horizonGreen(), skybox.horizonBlue(),
-                        viewDistance * 0.6f, viewDistance, skybox));
+                        frameView * 0.6f, frameView, skybox));
+                    if (ocean != null) {
+                        ocean.update(camX, camZ, entityAnimationTime);
+                        sceneRenderer.render(ocean.scene(), viewProjection, camX, camY, camZ);
+                    }
                     lastStats = sceneRenderer.render(renderScene, viewProjection, camX, camY, camZ);
                     SceneRenderStats entityStats = entitySceneRenderer.render(entityRenderSystem.scene(), viewProjection, camX, camY, camZ);
                     worldItemModels.update(deltaSeconds);

@@ -4,6 +4,8 @@ import dev.itzsiden.skyvoxel.engine.entity.Entity;
 import dev.itzsiden.skyvoxel.engine.entity.EntityModel;
 import dev.itzsiden.skyvoxel.engine.entity.EntityType;
 import dev.itzsiden.skyvoxel.engine.entity.EntityWorld;
+import dev.itzsiden.skyvoxel.engine.physics.AxisAlignedBox;
+import dev.itzsiden.skyvoxel.engine.physics.StaticCollisionWorld;
 import dev.itzsiden.skyvoxel.render.api.Key;
 import dev.itzsiden.skyvoxel.render.api.MouseDelta;
 import dev.itzsiden.skyvoxel.render.api.RenderWindow;
@@ -13,6 +15,7 @@ final class ShipExplorationSystem {
     private static final String VESSEL_ID = "player-harbor-cutter";
     private final EntityWorld entities;
     private final EntityModel model;
+    private final StaticCollisionWorld collision;
 
     private Entity vessel;
     private boolean boarded;
@@ -24,9 +27,10 @@ final class ShipExplorationSystem {
     private float speed;
     private float waveTime;
 
-    ShipExplorationSystem(EntityWorld entities, EntityModel model) {
+    ShipExplorationSystem(EntityWorld entities, EntityModel model, StaticCollisionWorld collision) {
         this.entities = java.util.Objects.requireNonNull(entities, "entities");
         this.model = java.util.Objects.requireNonNull(model, "model");
+        this.collision = java.util.Objects.requireNonNull(collision, "collision");
     }
 
     boolean boarded() { return boarded; }
@@ -41,7 +45,7 @@ final class ShipExplorationSystem {
         x = 0.0f;
         y = 0.78f;
         z = 66.0f;
-        yaw = 0.0f;
+        yaw = (float) Math.PI;   // bow points to open sea (south), away from the pier
         pitch = 0.0f;
         speed = 0.0f;
         waveTime = 0.0f;
@@ -61,7 +65,7 @@ final class ShipExplorationSystem {
         if (vessel == null || boarded) return;
         boarded = true;
         speed = 0.0f;
-        yaw = vessel.yaw();
+        yaw = -vessel.yaw();
         x = vessel.x();
         y = vessel.y();
         z = vessel.z();
@@ -100,10 +104,13 @@ final class ShipExplorationSystem {
             yaw += steering * 1.25f * dt * (speed >= 0.0f ? 1.0f : -1.0f);
         }
 
-        x += (float) Math.sin(yaw) * speed * dt;
-        z -= (float) Math.cos(yaw) * speed * dt;
-        x = clamp(x, -1800.0f, 1800.0f);
-        z = clamp(z, -1800.0f, 1800.0f);
+        // Move per axis so the hull slides along shores/piers instead of sailing through them.
+        float nx = clamp(x + (float) Math.sin(yaw) * speed * dt, -1800.0f, 1800.0f);
+        float nz = clamp(z - (float) Math.cos(yaw) * speed * dt, -1800.0f, 1800.0f);
+        boolean blocked = false;
+        if (hullFree(nx, z)) x = nx; else blocked = true;
+        if (hullFree(x, nz)) z = nz; else blocked = true;
+        if (blocked) speed *= -0.2f;   // soft bump, never sticks
 
         waveTime += dt;
         y = 0.78f + (float) Math.sin(waveTime * 1.65f) * 0.035f;
@@ -111,8 +118,18 @@ final class ShipExplorationSystem {
         placePlayerAtHelm(player);
     }
 
+    /** Hull = two boxes (bow + stern) at water level, checked against islands, cliffs and the pier. */
+    private boolean hullFree(float cx, float cz) {
+        float fx = (float) Math.sin(yaw), fz = -(float) Math.cos(yaw);
+        for (float off : new float[] {-1.9f, 1.9f}) {
+            float px = cx + fx * off, pz = cz + fz * off;
+            if (collision.intersects(new AxisAlignedBox(px - 1.35, 1.06, pz - 1.35, px + 1.35, 1.9, pz + 1.35))) return false;
+        }
+        return true;
+    }
+
     private void syncVessel() {
-        vessel.setPosition(x, y, z).setYaw(yaw);
+        vessel.setPosition(x, y, z).setYaw(-yaw);   // entity yaw is mirrored vs camera yaw
     }
 
     private void placePlayerAtHelm(PlayerController player) {

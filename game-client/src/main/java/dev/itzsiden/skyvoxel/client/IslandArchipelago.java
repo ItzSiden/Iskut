@@ -79,6 +79,14 @@ final class IslandArchipelago {
             return new Landing(clamp(x + 3.0f, -8.8f, 8.8f), 1.18f, clamp(z, 52.0f, 61.0f));
         }
 
+        // Landing point at the Mining Island dock / shore.
+        if (Math.abs(x) <= 14.0f && z >= 165.0f && z <= 198.0f) {
+            return new Landing(clamp(x + 2.5f, -2.5f, 2.5f), 1.18f, clamp(z, 175.0f, 194.0f));
+        }
+        if (Math.abs(x) <= 38.0f && z >= 170.0f && z <= 265.0f) {
+            return new Landing(0.0f, 1.18f, 192.0f);
+        }
+
         for (Island island : ISLANDS) {
             float halfW = island.width() * 0.5f - 4.0f;
             float halfD = island.depth() * 0.5f - 4.0f;

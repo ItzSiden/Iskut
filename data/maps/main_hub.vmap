@@ -29,6 +29,11 @@ PLACE dock ../structures/dock.vstruct 0 1.18 44.5 0
 PLACE hub_props ../structures/hub_props.vstruct 0 3.18 0 0
 PLACE hub_palms ../structures/hub_palms.vstruct 0 3.18 0 0
 
+# Mining Island (rocky quarry, cliffs, mine tunnel, props, and dock).
+PLACE mine_terrain ../structures/mine_terrain.vstruct 0 1.18 220 0
+PLACE mine_props ../structures/mine_props.vstruct 0 1.18 220 0
+PLACE mine_dock ../structures/mine_dock.vstruct 0 1.18 220 0
+
 # Old organic island / plaza / portal / old bazaar - replaced.
 #PLACE island ../structures/island_terrain.vstruct 0 1.18 0 0
 #PLACE plaza_props ../structures/plaza_props.vstruct 0 1.18 0 0
